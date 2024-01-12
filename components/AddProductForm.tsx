@@ -1,10 +1,34 @@
 import { PhotoIcon } from "@heroicons/react/24/solid";
+import prisma from "@/lib/db/prisma"
+import { redirect } from "next/navigation";
 
+async function addProduct(formData: FormData) {
+  'use server'
 
+  const name = formData.get('name')?.toString()
+  const description = formData.get('description')?.toString()
+  const imageUrl = formData.get('imageUrl')?.toString()
+  const price = Number(formData.get('price') || 0);
+
+  if(!name || !description || !imageUrl || !price) {
+    throw Error('Missing required filed')
+  }
+   
+  await prisma.product.create({
+    data: {
+      name,
+      description,
+      imageUrl,
+      price
+    }
+
+  })
+  redirect('/')
+}
 
 function AddProductForm() {
   return (
-    <form>
+    <form action={addProduct}>
       <div className="space-y-12">
         <div className="pb-12">
           <h2 className="text-4xl font-semibold leading-7 text-gray-900">
@@ -17,7 +41,7 @@ function AddProductForm() {
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-4">
               <label
-                htmlFor="productname"
+                htmlFor="name"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Product name
@@ -26,8 +50,8 @@ function AddProductForm() {
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                   <input
                     type="text"
-                    name="productname"
-                    id="productname"
+                    name="name"
+                    id="name"
                     autoComplete="username"
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                     placeholder="Name"
@@ -38,7 +62,7 @@ function AddProductForm() {
 
             <div className="sm:col-span-4">
               <label
-                htmlFor="productprice"
+                htmlFor="price"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Product price
@@ -49,8 +73,8 @@ function AddProductForm() {
                     type="number"
                     min="1"
                     step="any"
-                    name="productprice"
-                    id="productprice"
+                    name="price"
+                    id="price"
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                     placeholder="0"
                   />
@@ -60,15 +84,15 @@ function AddProductForm() {
 
             <div className="col-span-full">
               <label
-                htmlFor="productdescription"
+                htmlFor="description"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Product description
               </label>
               <div className="mt-2">
                 <textarea
-                  id="productdescription"
-                  name="productdescription"
+                  id="description"
+                  name="description"
                   rows={3}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   defaultValue={""}
@@ -93,13 +117,13 @@ function AddProductForm() {
                   />
                   <div className="mt-4 flex text-sm leading-6 text-gray-600">
                     <label
-                      htmlFor="file-upload"
+                      htmlFor="imageUrl"
                       className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                     >
                       <span>Upload a file</span>
                       <input
-                        id="file-upload"
-                        name="file-upload"
+                        id="imageUrl"
+                        name="imageUrl"
                         type="file"
                         className="sr-only"
                       />
