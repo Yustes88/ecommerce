@@ -1,29 +1,29 @@
 import { PhotoIcon } from "@heroicons/react/24/solid";
-import prisma from "@/lib/db/prisma"
+import prisma from "@/lib/db/prisma";
 import { redirect } from "next/navigation";
+import Button from "./Button";
 
 async function addProduct(formData: FormData) {
-  'use server'
+  "use server";
 
-  const name = formData.get('name')?.toString()
-  const description = formData.get('description')?.toString()
-  const imageUrl = formData.get('imageUrl')?.toString()
-  const price = Number(formData.get('price') || 0);
+  const name = formData.get("name")?.toString();
+  const description = formData.get("description")?.toString();
+  const imageUrl = formData.get("imageUrl")?.toString();
+  const price = Number(formData.get("price") || 0);
 
-  if(!name || !description || !imageUrl || !price) {
-    throw Error('Missing required filed')
+  if (!name || !description || !imageUrl || !price) {
+    throw Error("Missing required filed");
   }
-   
+
   await prisma.product.create({
     data: {
       name,
       description,
       imageUrl,
-      price
-    }
-
-  })
-  redirect('/')
+      price,
+    },
+  });
+  redirect("/");
 }
 
 function AddProductForm() {
@@ -141,18 +141,15 @@ function AddProductForm() {
       </div>
 
       <div className="mt-6 flex items-center justify-end gap-x-6">
-        <button
-          type="button"
+        <Button
+          type={"button"}
           className="text-sm font-semibold leading-6 text-gray-900"
         >
           Cancel
-        </button>
-        <button
-          type="submit"
-          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
+        </Button>
+        <Button type={'submit'} className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
           Save
-        </button>
+        </Button>
       </div>
     </form>
   );
