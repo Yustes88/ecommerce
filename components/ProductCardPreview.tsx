@@ -12,7 +12,7 @@ function ProductCardPreview({ product }: ProductCardPreviewProps) {
   return (
     <Link
       className="card w-full bg-rose-50 transition-shadow hover:shadow-xl"
-      href={`/products/${product.id}`}
+      href={`/product/${product.id}`}
     >
         <figure>
             <Image src={product.imageUrl} className="h-48 object-cover" alt={product.name} width={800} height={400}/>
