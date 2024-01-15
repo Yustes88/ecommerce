@@ -15,7 +15,7 @@ function ProductCardPreview({ product }: ProductCardPreviewProps) {
       href={`/products/${product.id}`}
     >
         <figure>
-            <Image src={'/' + product.imageUrl} className="h-48 object-cover" alt={product.name} width={800} height={400}/>
+            <Image src={product.imageUrl} className="h-48 object-cover" alt={product.name} width={800} height={400}/>
         </figure>
       <div className="card-body">
         <h2 className="card-title">
