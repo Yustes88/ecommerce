@@ -1,4 +1,3 @@
-import { PhotoIcon } from "@heroicons/react/24/solid";
 import prisma from "@/lib/db/prisma";
 import { redirect } from "next/navigation";
 import Button from "./Button";
@@ -104,37 +103,22 @@ function AddProductForm() {
 
             <div className="col-span-full">
               <label
-                htmlFor="cover-photo"
+                htmlFor="imageUrl"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                Product image
+                Image link
               </label>
-              <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                <div className="text-center">
-                  <PhotoIcon
-                    className="mx-auto h-12 w-12 text-gray-300"
-                    aria-hidden="true"
-                  />
-                  <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                    <label
-                      htmlFor="imageUrl"
-                      className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                    >
-                      <span>Upload a file</span>
-                      <input
-                        id="imageUrl"
-                        name="imageUrl"
-                        type="file"
-                        className="sr-only"
-                      />
-                    </label>
-                    <p className="pl-1">or drag and drop</p>
-                  </div>
-                  <p className="text-xs leading-5 text-gray-600">
-                    PNG, JPG, GIF up to 10MB
-                  </p>
-                </div>
+              <div className="mt-2">
+                <input
+                  id="imageUrl"
+                  name="imageUrl"
+                  type="url"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  defaultValue={""}
+                  placeholder="Please enter the product image link here"
+                />
               </div>
+              {/* <p className="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p> */}
             </div>
           </div>
         </div>

@@ -12,7 +12,7 @@ export default async function Home() {
       <div className="hero rounded-xl bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
           <Image
-            src={"/" + products[0].imageUrl}
+            src={ products[0].imageUrl}
             alt={products[0].name}
             width={400}
             height={800}
@@ -33,7 +33,7 @@ export default async function Home() {
       </div>
       <div className="my-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {products.slice(1).map((product) => (
-          <ProductCardPreview key={product.id} product={products[0]}/>
+          <ProductCardPreview key={product.id} product={product}/>
         ))}
       </div>
     </div>
