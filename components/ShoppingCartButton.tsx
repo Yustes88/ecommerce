@@ -2,12 +2,20 @@
 
 import { ShoppingCart } from "@/lib/db/cart";
 import formatPrice from "@/lib/db/format";
+import Link from "next/link";
 
 type ShoppingCartButtonProps = {
   cart: ShoppingCart | null;
 };
 
 function ShoppingCartButton({cart}: ShoppingCartButtonProps) {
+  function closeDropDown() {
+    const elem = document.activeElement as HTMLElement
+    if(elem) {
+      elem.blur()
+    }
+  } 
+
   return (
     <div className="dropdown dropdown-end">
       <label tabIndex={0} className="btn btn-circle btn-ghost">
@@ -35,6 +43,10 @@ function ShoppingCartButton({cart}: ShoppingCartButtonProps) {
           <span className="text-info">
             Subtotal: {formatPrice(cart?.subtotal || 0)}
           </span>
+          <div className="card-actions">
+            <Link href='/cart' className="btn btn-primary btn-block"
+            onClick={closeDropDown}>View cart</Link>
+          </div>
         </div>
       </div>
     </div>
