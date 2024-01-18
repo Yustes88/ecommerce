@@ -19,9 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={clsx(`${inter.className}, bg-white`)}>
+      <body className={clsx(`${inter.className}, bg-white flex flex-col min-h-screen`)}>
         <NavBar/>
-        <main className='p-4 m-auto max-w-3xl '>
+        <main className='p-4 m-auto max-w-3xl flex-grow '>
           {children}
         </main>
         <Footer/>
