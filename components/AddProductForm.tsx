@@ -1,9 +1,16 @@
 import prisma from "@/lib/db/prisma";
 import { redirect } from "next/navigation";
 import Button from "./Button";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 async function addProduct(formData: FormData) {
   "use server";
+
+  const session = await getServerSession(authOptions)
+  if(!session) {
+    redirect('/api/auth/signIn?callbackUrl=/add-product')
+  }
 
   const name = formData.get("name")?.toString();
   const description = formData.get("description")?.toString();
@@ -25,7 +32,13 @@ async function addProduct(formData: FormData) {
   // redirect("/");
 }
 
-function AddProductForm() {
+async function AddProductForm() {
+  const session = await getServerSession(authOptions)
+
+  if(!session) {
+    redirect('/api/auth/signIn?callbackUrl=/add-product')
+  }
+
   return (
     <form action={addProduct}>
       <div className="space-y-12">
