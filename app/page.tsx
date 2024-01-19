@@ -1,6 +1,6 @@
 import PaginationBar from "@/components/PaginationBar";
 import ProductCardPreview from "@/components/ProductCardPreview";
-import prisma from "@/lib/db/prisma";
+import {prisma} from "@/lib/db/prisma";
 import Image from "next/image";
 import Link from "next/link";
 

@@ -1,4 +1,4 @@
-import prisma from "@/lib/db/prisma";
+import {prisma} from "@/lib/db/prisma";
 import { redirect } from "next/navigation";
 import Button from "./Button";
 import { getServerSession } from "next-auth";
