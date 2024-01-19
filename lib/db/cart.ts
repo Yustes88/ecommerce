@@ -1,5 +1,5 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import prisma from "@/lib/db/prisma";
+import {prisma} from "@/lib/db/prisma";
 import { Cart, CartItem, Prisma } from "@prisma/client";
 import { getServerSession } from "next-auth";
 import { cookies } from "next/dist/client/components/headers";
@@ -120,7 +120,7 @@ export async function mergeAnonymesCartIntoUserCart(userId: string) {
               data: mergedCartItems.map((item) => ({
                 productId: item.productId,
                 quantity: item.quantity,
-              }))
+}))
             }
           }
         }
