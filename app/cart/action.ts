@@ -11,9 +11,14 @@ async function setProductQuantity(productId: string, quantity: number) {
 
   if (quantity === 0) {
     if (articleInCart) {
-      await prisma.cartItem.delete({
-        where: { id: articleInCart.id },
-      });
+      await prisma.cart.update({
+        where: {id: cart.id},
+        data: {
+          items: {
+            delete: {id: articleInCart.id}
+          }
+        }
+      })
     }
   } else {
     if (articleInCart) {
