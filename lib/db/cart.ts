@@ -1,4 +1,4 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/utils/authOptions";
 import {prisma} from "@/lib/db/prisma";
 import { Cart, CartItem, Prisma } from "@prisma/client";
 import { getServerSession } from "next-auth";
@@ -23,7 +23,7 @@ export async function getCart(): Promise<ShoppingCart | null> {
 
   if (session) {
     cart = await prisma.cart.findFirst({
-      where: { userId: session.user.id },
+      where: {id: session.user.id},
       include: { items: { include: { product: true } } },
     });
   } else {
@@ -56,7 +56,7 @@ export async function createCart(): Promise<ShoppingCart> {
   let newCart: Cart;
   if (session) {
     newCart = await prisma.cart.create({
-      data: { userId: session.user.id },
+      data: { id: session.user.id },
     });
   } else {
     newCart = await prisma.cart.create({
@@ -100,7 +100,7 @@ export async function mergeAnonymesCartIntoUserCart(userId: string) {
   if (!localCart) return;
 
   const userCart = await prisma.cart.findFirst({
-    where: { userId },
+    where: {  },
     include: { items: true },
   });
 
@@ -128,7 +128,6 @@ export async function mergeAnonymesCartIntoUserCart(userId: string) {
     } else {
       await tx.cart.create({
         data: {
-          userId,
           items: {
             createMany: {
               data: localCart.items.map((item) => ({
