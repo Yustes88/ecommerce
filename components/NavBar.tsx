@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import ShoppingCartButton from "./ShoppingCartButton";
 import UserMenuButton from "./UserMenuButton";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/utils/authOptions";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 async function searchProducts(formData:FormData) {
     "use server"

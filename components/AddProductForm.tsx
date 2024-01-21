@@ -2,14 +2,15 @@ import {prisma} from "@/lib/db/prisma";
 import { redirect } from "next/navigation";
 import Button from "./Button";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/utils/authOptions";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 async function addProduct(formData: FormData) {
   "use server";
 
-  const session = await getServerSession(authOptions)
-  if(!session) {
-    redirect('/api/auth/signIn?callbackUrl=/add-product')
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect("/api/auth/signin?callbackUrl=/add-product");
   }
 
   const name = formData.get("name")?.toString();
