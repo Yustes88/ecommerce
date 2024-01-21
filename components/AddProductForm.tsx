@@ -2,7 +2,7 @@ import {prisma} from "@/lib/db/prisma";
 import { redirect } from "next/navigation";
 import Button from "./Button";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/utils/authOptions";
 
 async function addProduct(formData: FormData) {
   "use server";
