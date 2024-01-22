@@ -1,6 +1,7 @@
 import HeroSection from "@/components/HeroSection";
 import PaginationBar from "@/components/PaginationBar";
 import ProductCardPreview from "@/components/ProductCardPreview";
+import ProductsList from "@/components/ProductsList";
 import ShopByCategory from "@/components/ShopByCategorySection";
 import {prisma} from "@/lib/db/prisma";
 import Image from "next/image";
@@ -31,45 +32,8 @@ export default async function Home({
     <>
       <HeroSection/>
       <ShopByCategory/>
+      <ProductsList products={products} currentPage = {currentPage} totalPages = {totalPages}/>
     
-    <div className="items-center flex flex-col p-8">
-      {currentPage === 1 && 
-      
-      
-      <div className="hero rounded-xl bg-base-200">
-        <div className="hero-content flex-col lg:flex-row">
-          <Image
-            src={products[0].imageUrl}
-            alt={products[0].name}
-            width={400}
-            height={800}
-            className="w-full max-w-sm rounded-lg shadow-2xl"
-            priority
-          />
-          <div>
-            <h1 className="text-5xl font-bold">{products[0].name}</h1>
-            <p className="py-6">{products[0].description}</p>
-            <Link
-              href={`/product/${products[0].id}`}
-              className="btn btn-primary"
-            >
-              Check it out
-            </Link>
-          </div>
-        </div>
-      </div>
-      }
-      
-      <div className="my-4 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {(currentPage === 1 ? products.slice(1) : products).map((product) => (
-          <ProductCardPreview key={product.id} product={product} />
-        ))}
-      </div>
-      {totalPages > 1 &&
-      <PaginationBar currentPage={currentPage} totalPages={totalPages} />
-      
-      }
-    </div>
     </>
   );
 }
