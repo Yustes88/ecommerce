@@ -32,7 +32,7 @@ export default async function Home({
       <HeroSection/>
       <ShopByCategory/>
     
-    <div className="items-center">
+    <div className="items-center flex flex-col p-8">
       {currentPage === 1 && 
       
       
