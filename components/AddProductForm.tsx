@@ -23,13 +23,7 @@ async function addProduct(formData: FormData) {
   if (!name || !description || !imageUrl || !price || !category) {
     throw Error("Missing required filed");
   }
-
  
-    await prisma.product.deleteMany({
-      where: {},
-    });
-
-  
   await prisma.product.create({
     data: {
       name,

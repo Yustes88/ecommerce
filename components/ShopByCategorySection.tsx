@@ -23,7 +23,7 @@ export default function ShopByCategory() {
               {categories.map((category) => (
                 <a
                   key={category.name}
-                  href={category.href}
+                  href={`category${category.href}`}
                   className="relative flex min-h-80 w-full flex-col overflow-hidden rounded-lg p-6 hover:opacity-75"
                 >
                   <span aria-hidden="true" className="absolute inset-0">
