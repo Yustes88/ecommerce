@@ -87,7 +87,7 @@ async function AddProductForm() {
                 <div className="flex rounded-md shadow-sm focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
                   <select name="category">
                     {categories.map((category) => (
-                      <option key={category.id} value={category.name}>{(category.name).toLocaleUpperCase()}</option>
+                      <option key={category.id} value={category.name}>{category.name}</option>
                     ))}
                   </select>
                 </div>
