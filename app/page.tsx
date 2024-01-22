@@ -1,5 +1,7 @@
+import HeroSection from "@/components/HeroSection";
 import PaginationBar from "@/components/PaginationBar";
 import ProductCardPreview from "@/components/ProductCardPreview";
+import ShopByCategory from "@/components/ShopByCategorySection";
 import {prisma} from "@/lib/db/prisma";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,7 +28,11 @@ export default async function Home({
   });
 
   return (
-    <div className="flex flex-col items-center">
+    <>
+      <HeroSection/>
+      <ShopByCategory/>
+    
+    <div className="items-center flex flex-col p-8">
       {currentPage === 1 && 
       
       
@@ -64,5 +70,6 @@ export default async function Home({
       
       }
     </div>
+    </>
   );
 }
