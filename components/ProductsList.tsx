@@ -13,7 +13,7 @@ type ProductsListProps = {
 export default async function ProductsList({products, currentPage, totalPages}: ProductsListProps) {
 
   return (
-    <div className="flex flex-col items-center p-8">
+    <div className="flex flex-col items-center m-auto max-w-[70%] p-8">
       {currentPage === 1 && (
         <div className="hero rounded-xl bg-base-200">
           <div className="hero-content flex-col lg:flex-row">
