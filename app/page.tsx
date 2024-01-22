@@ -1,6 +1,7 @@
-import HerSection from "@/components/HeroSection";
+import HeroSection from "@/components/HeroSection";
 import PaginationBar from "@/components/PaginationBar";
 import ProductCardPreview from "@/components/ProductCardPreview";
+import ShopByCategory from "@/components/ShopByCategorySection";
 import {prisma} from "@/lib/db/prisma";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,9 +28,11 @@ export default async function Home({
   });
 
   return (
+    <>
+      <HeroSection/>
+      <ShopByCategory/>
+    
     <div className="items-center">
-      <HerSection/>
-
       {currentPage === 1 && 
       
       
@@ -67,5 +70,6 @@ export default async function Home({
       
       }
     </div>
+    </>
   );
 }

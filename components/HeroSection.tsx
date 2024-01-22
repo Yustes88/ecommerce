@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function HerSection() {
+export default function HeroSection() {
   return (
     <div className="bg-gray-300">
       <div className="relative isolate overflow-hidden pt-14">
