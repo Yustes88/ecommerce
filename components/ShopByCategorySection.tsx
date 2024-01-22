@@ -24,7 +24,7 @@ export default function ShopByCategory() {
                 <a
                   key={category.name}
                   href={category.href}
-                  className="relative flex min-h-80 w-full flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
+                  className="relative flex min-h-80 w-full flex-col overflow-hidden rounded-lg p-6 hover:opacity-75"
                 >
                   <span aria-hidden="true" className="absolute inset-0">
                     <Image
