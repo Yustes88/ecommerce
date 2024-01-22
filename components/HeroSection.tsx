@@ -35,16 +35,16 @@ export default function HerSection() {
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
-                href="#"
+                href="/categories"
                 className="rounded-md bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
               >
-                Get started
+                Start shopping
               </a>
               <a
-                href="#"
+                href="/about"
                 className="text-sm font-semibold leading-6 text-black"
               >
-                Learn more <span aria-hidden="true">→</span>
+                About us <span aria-hidden="true">→</span>
               </a>
             </div>
           </div>
