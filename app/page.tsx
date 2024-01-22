@@ -1,3 +1,4 @@
+import HerSection from "@/components/HeroSection";
 import PaginationBar from "@/components/PaginationBar";
 import ProductCardPreview from "@/components/ProductCardPreview";
 import {prisma} from "@/lib/db/prisma";
@@ -26,7 +27,9 @@ export default async function Home({
   });
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="items-center">
+      <HerSection/>
+
       {currentPage === 1 && 
       
       
