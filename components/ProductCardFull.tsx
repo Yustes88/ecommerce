@@ -13,6 +13,7 @@ import AddToCartButton from "@/app/product/[id]/AddToCartButton";
 import { incrementProductQuantity } from "@/app/product/[id]/actions";
 import ProductDetails from "./ProductDetails";
 import formatPrice from "@/lib/db/format";
+import { sizes } from "@/data/data";
 
 // const product = {
 //   id: "dvfhosidvposdjpv0",
@@ -43,7 +44,7 @@ function classNames(...classes: any) {
 }
 
 export default function ProductCardFull({product}: ProductCardFullProps) {
-//   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
+  const [selectedSize, setSelectedSize] = useState(sizes[2].name);
 
   return (
     <div className="bg-white">
@@ -69,7 +70,7 @@ export default function ProductCardFull({product}: ProductCardFullProps) {
           <div className="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
             <div className="lg:col-span-5 lg:col-start-8">
               <div className="flex justify-between">
-                <h1 className="text-xl font-medium text-gray-900">
+                <h1 className="text-xl font-medium capitalize text-gray-900">
                   {product.name}
                 </h1>
                 <p className="text-xl font-medium text-gray-900">
@@ -132,7 +133,7 @@ export default function ProductCardFull({product}: ProductCardFullProps) {
             </div>
 
             <div className="mt-8 lg:col-span-5">
-              {/* <form>
+              <form>
                 Size picker
                 <div className="mt-8">
                   <RadioGroup
@@ -144,7 +145,7 @@ export default function ProductCardFull({product}: ProductCardFullProps) {
                       Choose a size
                     </RadioGroup.Label>
                     <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
-                      {product.sizes.map((size) => (
+                      {sizes.map((size) => (
                         <RadioGroup.Option
                           key={size.name}
                           value={size}
@@ -180,7 +181,7 @@ export default function ProductCardFull({product}: ProductCardFullProps) {
                     "mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   }
                 />
-              </form> */}
+              </form>
 
               {/* Product details */}
               <div className="mt-10">

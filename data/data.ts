@@ -38,3 +38,13 @@ export const policies = [
 "Ethical sourcing",
 "Supporting local business",
 ];
+
+
+export const sizes = [
+      { name: "XXS", inStock: true },
+      { name: "XS", inStock: true },
+      { name: "S", inStock: true },
+      { name: "M", inStock: true },
+      { name: "L", inStock: true },
+      { name: "XL", inStock: false },
+    ]
