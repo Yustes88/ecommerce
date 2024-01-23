@@ -1,8 +1,9 @@
-import {prisma} from "@/lib/db/prisma";
+import { prisma } from "@/lib/db/prisma";
 import { redirect } from "next/navigation";
 import Button from "./Button";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/utils/authOptions";
+import { categories } from "@/data/data";
 
 async function addProduct(formData: FormData) {
   "use server";
@@ -17,27 +18,29 @@ async function addProduct(formData: FormData) {
   const description = formData.get("description")?.toString();
   const imageUrl = formData.get("imageUrl")?.toString();
   const price = Number(formData.get("price") || 0);
+  const category = formData.get('category')?.toString();
 
-  if (!name || !description || !imageUrl || !price) {
+  if (!name || !description || !imageUrl || !price || !category) {
     throw Error("Missing required filed");
   }
-
+ 
   await prisma.product.create({
     data: {
       name,
       description,
       imageUrl,
       price,
+      category
     },
   });
-  // redirect("/");
+  redirect("/");
 }
 
 async function AddProductForm() {
-  const session = await getServerSession(authOptions)
+  const session = await getServerSession(authOptions);
 
-  if(!session) {
-    redirect('/api/auth/signIn?callbackUrl=/add-product')
+  if (!session) {
+    redirect("/api/auth/signIn?callbackUrl=/add-product");
   }
 
   return (
@@ -69,6 +72,24 @@ async function AddProductForm() {
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                     placeholder="Name"
                   />
+                </div>
+              </div>
+            </div>
+
+            <div className="sm:col-span-4">
+              <label
+                htmlFor="category"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Product category
+              </label>
+              <div className="mt-2">
+                <div className="flex rounded-md shadow-sm focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                  <select name="category">
+                    {categories.map((category) => (
+                      <option key={category.id} value={category.name}>{category.name}</option>
+                    ))}
+                  </select>
                 </div>
               </div>
             </div>

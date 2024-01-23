@@ -2,14 +2,14 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <div className="bg-gray-300">
-      <div className="relative isolate overflow-hidden pt-14">
+    <div className="bg-gray-300 h-[60vh]">
+      <div className="relative isolate overflow-hidden pt-14 h-full">
         <Image
           src="https://images.unsplash.com/photo-1638959882980-906e24520fe5?q=80&w=2013&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Model image"
           className="object-left-right absolute inset-0 -z-10 h-full w-full object-cover sepia"
           width={800}
-          height={600}
+          height={800}
         />
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -24,15 +24,10 @@ export default function HeroSection() {
           />
         </div>
         <div className="mx-auto max-w-2xl pb-16">
-          <div className="text-center md:px-2">
+          <div className="text-center md:px-2 flex flex-col gap-20 pt-8">
             <h1 className="text-4xl font-bold tracking-tight text-black sm:text-6xl">
               Shine Treasures
             </h1>
-            <p className="mt-6 text-lg leading-8 text-black">
-              We believe
-              that jewelry should be more than just an accessory; it should be a
-              story, a reflection of your personality and style.
-            </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
                 href="/categories"
