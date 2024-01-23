@@ -1,7 +1,5 @@
-import Link from "next/link";
 import PaginationBar from "./PaginationBar";
 import ProductCardPreview from "./ProductCardPreview";
-import Image from "next/image";
 import { Product } from "@prisma/client";
 import Heading from "./Heading";
 
