@@ -3,7 +3,7 @@ import PaginationBar from "@/components/PaginationBar";
 import ProductCardPreview from "@/components/ProductCardPreview";
 import ProductsList from "@/components/ProductsList";
 import ShopByCategory from "@/components/ShopByCategorySection";
-import {prisma} from "@/lib/db/prisma";
+import { prisma } from "@/lib/db/prisma";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -24,16 +24,21 @@ export default async function Home({
 
   const products = await prisma.product.findMany({
     orderBy: { id: "desc" },
-    skip: (currentPage - 1) * pageSize + (currentPage === 1 ? 0 : heroItemCount),
-    take: pageSize + (currentPage === 1 ? heroItemCount : 0)
+    skip:
+      (currentPage - 1) * pageSize + (currentPage === 1 ? 0 : heroItemCount),
+    take: pageSize + (currentPage === 1 ? heroItemCount : 0),
   });
 
   return (
     <>
-      <HeroSection/>
-      <ShopByCategory/>
-      <ProductsList products={products} currentPage = {currentPage} totalPages = {totalPages}/>
-    
+      <HeroSection />
+      <ShopByCategory />
+      <ProductsList
+        products={products}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        title={"Products"}
+      />
     </>
   );
 }

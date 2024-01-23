@@ -1,3 +1,4 @@
+import Heading from "@/components/Heading";
 import ProductCardPreview from "@/components/ProductCardPreview";
 import ProductsList from "@/components/ProductsList";
 import { prisma } from "@/lib/db/prisma";
@@ -5,11 +6,14 @@ import { prisma } from "@/lib/db/prisma";
 type ProductPageProps = {
   params: {
     id: string;
-  },
+  };
   searchParams: { page: string };
 };
 
-async function CategoryPage({ params: { id }, searchParams: {page} }: ProductPageProps) {
+async function CategoryPage({
+  params: { id },
+  searchParams: { page },
+}: ProductPageProps) {
   const currentPage = parseInt(page);
   const pageSize = 6;
   const heroItemCount = 1;
@@ -19,7 +23,7 @@ async function CategoryPage({ params: { id }, searchParams: {page} }: ProductPag
   const totalPages = Math.ceil((totalItemCount - heroItemCount) / pageSize);
   const products = await prisma.product.findMany({
     where: {
-      category: id
+      category: id,
     },
     orderBy: {
       id: "desc",
@@ -32,9 +36,13 @@ async function CategoryPage({ params: { id }, searchParams: {page} }: ProductPag
 
   return (
     <>
-      <div>{id}</div>
-      <ProductsList products={products} currentPage = {currentPage} totalPages = {totalPages}/>
-
+      <ProductsList
+        products={products}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        title={id}
+        className={'uppercase m-auto text-center font-bold my-4'}
+      />
     </>
   );
 }
