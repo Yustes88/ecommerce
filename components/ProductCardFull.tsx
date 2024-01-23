@@ -3,7 +3,7 @@
 import { Product } from "@prisma/client";
 import Image from "next/image";
 
-type ProductCardPreviewProps = {
+type ProductCardFullProps = {
   product: Product;
 };
 
@@ -11,48 +11,39 @@ import { useState } from "react";
 import { RadioGroup } from "@headlessui/react";
 import AddToCartButton from "@/app/product/[id]/AddToCartButton";
 import { incrementProductQuantity } from "@/app/product/[id]/actions";
+import ProductDetails from "./ProductDetails";
+import formatPrice from "@/lib/db/format";
 
-const product = {
-    id: 'dvfhosidvposdjpv0',
-    category: {
-        name: "earrings",
-        id: "dksvhsdvhsld",
-        href: "/earrings",
-    },
-  name: "Basic Tee",
-  price: "$35",
-  rating: 3.9,
-  reviewCount: 512,
-  href: "#",
-  imgUrl:
-    "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8amV3ZWxyeXxlbnwwfHwwfHx8MA%3D%3D",
-  sizes: [
-    { name: "XXS", inStock: true },
-    { name: "XS", inStock: true },
-    { name: "S", inStock: true },
-    { name: "M", inStock: true },
-    { name: "L", inStock: true },
-    { name: "XL", inStock: false },
-  ],
-  description: `
-    <p>The Basic tee is an honest new take on a classic. The tee uses super soft, pre-shrunk cotton for true comfort and a dependable fit. They are hand cut and sewn locally, with a special dye technique that gives each tee it's own look.</p>
-    <p>Looking to stock your closet? The Basic tee also comes in a 3-pack or 5-pack at a bundle discount.</p>
-  `,
-  details: [
-    "Only the best materials",
-    "Ethically and locally made",
-    "Pre-washed and pre-shrunk",
-    "Machine wash cold with similar colors",
-  ],
-};
-
+// const product = {
+//   id: "dvfhosidvposdjpv0",
+//   category: 'earrings',
+//   name: "Basic Tee",
+//   price: "$35",
+//   rating: 3.9,
+//   reviewCount: 512,
+//   href: "#",
+//   imgUrl:
+//     "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8amV3ZWxyeXxlbnwwfHwwfHx8MA%3D%3D",
+//   sizes: [
+//     { name: "XXS", inStock: true },
+//     { name: "XS", inStock: true },
+//     { name: "S", inStock: true },
+//     { name: "M", inStock: true },
+//     { name: "L", inStock: true },
+//     { name: "XL", inStock: false },
+//   ],
+//   description: `
+//     <p>The Basic tee is an honest new take on a classic. The tee uses super soft, pre-shrunk cotton for true comfort and a dependable fit. They are hand cut and sewn locally, with a special dye technique that gives each tee it's own look.</p>
+//     <p>Looking to stock your closet? The Basic tee also comes in a 3-pack or 5-pack at a bundle discount.</p>
+//   `,
+// };
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
-  const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
+export default function ProductCardFull({product}: ProductCardFullProps) {
+//   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
 
   return (
     <div className="bg-white">
@@ -62,18 +53,16 @@ export default function Example() {
           className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
         >
           <div role="list" className="flex items-center space-x-4">
-                <div className="flex items-center">
-                  <a
-                    href={`/category${product.category.href}`}
-                    className="mr-4 text-sm font-medium capitalize text-gray-900"
-                  >
-                    {product.category.name}
-                  </a>
+            <div className="flex items-center">
+              <a
+                href={`/category/${product.category}`}
+                className="mr-4 text-sm font-medium capitalize text-gray-900"
+              >
+                {product.category}
+              </a>
 
-                  <div className="text-gray-400">
-                    /
-                  </div>
-              </div>
+              <div className="text-gray-400">/</div>
+            </div>
           </div>
         </nav>
         <div className="mx-auto mt-8 max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -84,7 +73,7 @@ export default function Example() {
                   {product.name}
                 </h1>
                 <p className="text-xl font-medium text-gray-900">
-                  {product.price}
+                  {formatPrice(product.price)}
                 </p>
               </div>
               {/* Reviews */}
@@ -133,9 +122,9 @@ export default function Example() {
 
               <div className="">
                 <Image
-                  src={product.imgUrl}
+                  src={product.imageUrl}
                   alt={product.name}
-                  className="object-cover h-[40rem]"
+                  className="h-[40rem] object-cover"
                   width={800}
                   height={800}
                 />
@@ -143,11 +132,9 @@ export default function Example() {
             </div>
 
             <div className="mt-8 lg:col-span-5">
-              <form>
-                {/* Size picker */}
+              {/* <form>
+                Size picker
                 <div className="mt-8">
-                  
-
                   <RadioGroup
                     value={selectedSize}
                     onChange={setSelectedSize}
@@ -186,8 +173,14 @@ export default function Example() {
                   </RadioGroup>
                 </div>
 
-                <AddToCartButton incrementProductQuantity={incrementProductQuantity} productId={product.id} className={'mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'}/>
-              </form>
+                <AddToCartButton
+                  incrementProductQuantity={incrementProductQuantity}
+                  productId={product.id}
+                  className={
+                    "mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  }
+                />
+              </form> */}
 
               {/* Product details */}
               <div className="mt-10">
@@ -203,18 +196,11 @@ export default function Example() {
 
               <div className="mt-8 border-t border-gray-200 pt-8">
                 <h2 className="text-sm font-medium text-gray-900">
-                  Fabric &amp; Care
+                  Why us?
                 </h2>
 
-                <div className="prose-sm prose mt-4 text-gray-500">
-                  <ul role="list">
-                    {product.details.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
+                <ProductDetails />
               </div>
-
             </div>
           </div>
         </div>
