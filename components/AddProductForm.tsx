@@ -18,19 +18,21 @@ async function addProduct(formData: FormData) {
   const description = formData.get("description")?.toString();
   const imageUrl = formData.get("imageUrl")?.toString();
   const price = Number(formData.get("price") || 0);
-  const category = formData.get('category')?.toString();
+  const category = formData.get("category")?.toString();
+  const details = formData.get("details")?.toString();
 
-  if (!name || !description || !imageUrl || !price || !category) {
+  if (!name || !description || !imageUrl || !price || !category || !details) {
     throw Error("Missing required filed");
   }
- 
+
   await prisma.product.create({
     data: {
       name,
       description,
       imageUrl,
       price,
-      category
+      category,
+      details,
     },
   });
   redirect("/");
@@ -87,7 +89,9 @@ async function AddProductForm() {
                 <div className="flex rounded-md shadow-sm focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
                   <select name="category">
                     {categories.map((category) => (
-                      <option key={category.id} value={category.name}>{category.name}</option>
+                      <option key={category.id} value={category.name}>
+                        {category.name}
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -131,6 +135,26 @@ async function AddProductForm() {
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   defaultValue={""}
                   placeholder="Please enter the product description here"
+                />
+              </div>
+              {/* <p className="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p> */}
+            </div>
+
+            <div className="col-span-full">
+              <label
+                htmlFor="details"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Product details
+              </label>
+              <div className="mt-2">
+                <textarea
+                  id="details"
+                  name="details"
+                  rows={3}
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  defaultValue={""}
+                  placeholder="Outer Diameter: 12 mm, Width: 2 mm, Thickness: 2 mm"
                 />
               </div>
               {/* <p className="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p> */}
