@@ -132,48 +132,21 @@ export default function ProductCardFull({product}: ProductCardFullProps) {
               </div>
             </div>
 
-            <div className="mt-8 lg:col-span-5">
-              <form>
-                Size picker
-                <div className="mt-8">
-                  <RadioGroup
-                    value={selectedSize}
-                    onChange={setSelectedSize}
-                    className="mt-2"
-                  >
-                    <RadioGroup.Label className="sr-only">
-                      Choose a size
-                    </RadioGroup.Label>
-                    <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
-                      {sizes.map((size) => (
-                        <RadioGroup.Option
-                          key={size.name}
-                          value={size}
-                          className={({ active, checked }) =>
-                            classNames(
-                              size.inStock
-                                ? "cursor-pointer focus:outline-none"
-                                : "cursor-not-allowed opacity-25",
-                              active
-                                ? "ring-2 ring-indigo-500 ring-offset-2"
-                                : "",
-                              checked
-                                ? "border-transparent bg-indigo-600 text-white hover:bg-indigo-700"
-                                : "border-gray-200 bg-white text-gray-900 hover:bg-gray-50",
-                              "flex items-center justify-center rounded-md border px-3 py-3 text-sm font-medium uppercase sm:flex-1",
-                            )
-                          }
-                          disabled={!size.inStock}
-                        >
-                          <RadioGroup.Label as="span">
-                            {size.name}
-                          </RadioGroup.Label>
-                        </RadioGroup.Option>
-                      ))}
-                    </div>
-                  </RadioGroup>
-                </div>
+            <div className=" lg:col-span-5">
+            <div className="mt-10">
+                <h2 className="text-sm font-medium text-gray-900">
+                  Details
+                </h2>
 
+                <div
+                  className="prose-sm prose mt-4 text-gray-500"
+                >
+                  <ul className="flex flex-col">
+                  {product.details.split(',').map((detail) => (
+                    <li key={detail}>{detail}</li>
+                  ))}
+                  </ul>
+                </div>
                 <AddToCartButton
                   incrementProductQuantity={incrementProductQuantity}
                   productId={product.id}
@@ -181,7 +154,7 @@ export default function ProductCardFull({product}: ProductCardFullProps) {
                     "mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   }
                 />
-              </form>
+              </div>
 
               {/* Product details */}
               <div className="mt-10">
