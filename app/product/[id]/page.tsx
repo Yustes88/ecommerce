@@ -42,10 +42,6 @@ async function ProductPage({ params: { id } }: ProductPageProps) {
   return (
     <>
       <ProductCardFull product={product}/>
-      {/* <AddToCartButton
-        productId={product.id}
-        incrementProductQuantity={incrementProductQuantity}
-      /> */}
     </>
   );
 }

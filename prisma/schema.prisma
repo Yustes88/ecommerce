@@ -15,6 +15,7 @@ model Product {
   category      String
   details       String
   price         Int
+  isLiked       Boolean       @default(false)
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
   CartItem      CartItem[]

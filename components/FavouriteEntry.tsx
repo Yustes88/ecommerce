@@ -15,7 +15,7 @@ type CartEntryProps = {
 };
 
 function FavouriteEntry({
-  cartItem: { product, quantity },
+  cartItem: { product },
 }: CartEntryProps) {
   const [isPending, startTransition] = useTransition();
 

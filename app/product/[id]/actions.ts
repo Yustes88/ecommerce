@@ -53,7 +53,6 @@ export async function updateFavourites(productId: string) {
         items: {
           create: {
             productId,
-            quantity: 1
           }
         }
       }
@@ -81,4 +80,14 @@ export async function deleteFavourites(productId: string) {
  
 
   revalidatePath("/product/[id]")
+}
+
+export async function updateProductsLikedStatus(productId: string) {
+  return prisma.product.update({
+    where: {id: productId},
+    data: {
+      isLiked: true
+    }
+  });
+ 
 }

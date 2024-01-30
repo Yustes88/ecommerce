@@ -148,8 +148,8 @@ export default function ProductCardFull({ product }: ProductCardFullProps) {
                     }
                   />
                   <AddToFavouritesButton
-                    incrementProductQuantity={incrementProductQuantity}
                     productId={product.id}
+                    liked={product.isLiked}
                   />
               </div>
 

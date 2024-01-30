@@ -4,7 +4,7 @@ import {prisma} from "@/lib/db/prisma";
 import { HeartIcon } from "@heroicons/react/24/solid";
 import { HeartIcon as OutlinedHeart } from "@heroicons/react/24/outline";
 import { useState, useTransition } from "react";
-import { deleteFavourites, updateFavourites } from "./actions";
+import { deleteFavourites, updateFavourites, updateProductsLikedStatus } from "./actions";
 
 type AddToFavouritesButtonProps = {
   productId: string;
@@ -33,6 +33,7 @@ function AddToFavouritesButton({
             setIsLiked(false);
             startTransition(async () => {
               await deleteFavourites(productId);
+              await updateProductsLikedStatus(productId)
             });
           } else {
             setIsLiked(true);
