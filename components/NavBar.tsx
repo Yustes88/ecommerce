@@ -6,6 +6,7 @@ import UserMenuButton from "./UserMenuButton";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/utils/authOptions";
 import FavouritesButton from "./FavouritesButton";
+import { getFavourites } from "@/lib/db/favourites";
 
 async function searchProducts(formData:FormData) {
     "use server"
@@ -19,6 +20,7 @@ async function searchProducts(formData:FormData) {
 
 async function NavBar() {
     const cart = await getCart()
+    const favourites = await getFavourites()
     const session = await getServerSession(authOptions)
 
     return(
@@ -35,7 +37,7 @@ async function NavBar() {
                             <input name="searchQuery" placeholder="Search" className="input input-bordered w-full min-w-[100px]" type="text" />
                         </div>
                     </form>
-                    <FavouritesButton cart={cart}/>
+                    <FavouritesButton favourites={favourites}/>
                     <ShoppingCartButton cart={cart}/>
                     <UserMenuButton session={session}/>
                 </div>

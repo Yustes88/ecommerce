@@ -3,6 +3,7 @@
 import {prisma} from "@/lib/db/prisma";
 import { createCart, getCart } from "@/lib/db/cart";
 import { revalidatePath } from "next/cache";
+import { createFavourites, getFavourites } from "@/lib/db/favourites";
 
 export async function incrementProductQuantity(productId: string) {
   const cart = (await getCart()) ?? (await createCart());
@@ -39,13 +40,13 @@ export async function incrementProductQuantity(productId: string) {
 }
 
 export async function updateFavourites(productId: string) {
-  const cart = (await getCart()) ?? (await createCart());
+  const favourites = (await getFavourites()) ?? (await createFavourites());
 
-  const articleInCart = cart.items.find(item => item.productId === productId) 
+  const articleInCart = favourites.items.find(item => item.productId === productId) 
   
   if(articleInCart) {
-    await prisma.cart.update({
-      where: {id: cart.id},
+    await prisma.favourites.update({
+      where: {id: favourites.id},
       data: {
         items: {
           update: {
@@ -56,8 +57,8 @@ export async function updateFavourites(productId: string) {
       }
     })
   } else {
-    await prisma.cart.update({
-      where: {id: cart.id},
+    await prisma.favourites.update({
+      where: {id: favourites.id},
       data: {
         items: {
           create: {

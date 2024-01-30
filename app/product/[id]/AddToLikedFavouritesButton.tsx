@@ -3,6 +3,7 @@
 import { HeartIcon } from "@heroicons/react/24/solid";
 import { HeartIcon as OutlinedHeart } from "@heroicons/react/24/outline";
 import { useState, useTransition } from "react";
+import { updateFavourites } from "./actions";
 
 type AddToFavouritesButtonProps = {
   productId: string;
@@ -34,7 +35,7 @@ function AddToFavouritesButton({
 
           setSuccess(false);
           startTransition(async () => {
-            await incrementProductQuantity(productId);
+            await updateFavourites(productId);
             setSuccess(true);
           });
         }}
@@ -43,7 +44,7 @@ function AddToFavouritesButton({
       </button>
       {isPending && <span className="loading loading-spinner loading-sm" />}
       {!isPending && success && (
-        <span className="text-success">Added to cart</span>
+        <span className="text-success">Added to favourites</span>
       )}
     </div>
   );
