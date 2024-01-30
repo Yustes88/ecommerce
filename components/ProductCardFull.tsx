@@ -14,6 +14,7 @@ import { incrementProductQuantity } from "@/app/product/[id]/actions";
 import ProductDetails from "./ProductDetails";
 import formatPrice from "@/lib/db/format";
 import { sizes } from "@/data/data";
+import AddToFavouritesButton from "@/app/product/[id]/AddToLikedFavouritesButton";
 
 // const product = {
 //   id: "dvfhosidvposdjpv0",
@@ -39,11 +40,7 @@ import { sizes } from "@/data/data";
 //   `,
 // };
 
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(" ");
-}
-
-export default function ProductCardFull({product}: ProductCardFullProps) {
+export default function ProductCardFull({ product }: ProductCardFullProps) {
   const [selectedSize, setSelectedSize] = useState(sizes[2].name);
 
   return (
@@ -133,45 +130,43 @@ export default function ProductCardFull({product}: ProductCardFullProps) {
             </div>
 
             <div className=" lg:col-span-5">
-            <div className="mt-10">
-                <h2 className="text-sm font-medium text-gray-900">
-                  Details
-                </h2>
+              <div className="mt-10">
+                <h2 className="text-sm font-medium text-gray-900">Details</h2>
 
-                <div
-                  className="prose-sm prose mt-4 text-gray-500"
-                >
+                <div className="prose prose-sm mt-4 text-gray-500">
                   <ul className="flex flex-col">
-                  {product.details.split(',').map((detail) => (
-                    <li key={detail}>{detail}</li>
-                  ))}
+                    {product.details.split(",").map((detail) => (
+                      <li key={detail}>{detail}</li>
+                    ))}
                   </ul>
                 </div>
-                <AddToCartButton
-                  incrementProductQuantity={incrementProductQuantity}
-                  productId={product.id}
-                  className={
-                    "mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                  }
-                />
+                  <AddToCartButton
+                    incrementProductQuantity={incrementProductQuantity}
+                    productId={product.id}
+                    className={
+                      "mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    }
+                  />
+                  <AddToFavouritesButton
+                    productId={product.id}
+                    liked={product.isLiked}
+                  />
               </div>
 
               {/* Product details */}
-              <div className="mt-10">
+              <div className="mt-5">
                 <h2 className="text-sm font-medium text-gray-900">
                   Description
                 </h2>
 
                 <div
-                  className="prose-sm prose mt-4 text-gray-500"
+                  className="prose prose-sm mt-4 text-gray-500"
                   dangerouslySetInnerHTML={{ __html: product.description }}
                 />
               </div>
 
               <div className="mt-8 border-t border-gray-200 pt-8">
-                <h2 className="text-sm font-medium text-gray-900">
-                  Why us?
-                </h2>
+                <h2 className="text-sm font-medium text-gray-900">Why us?</h2>
 
                 <ProductDetails />
               </div>

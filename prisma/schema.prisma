@@ -8,20 +8,21 @@ datasource db {
 }
 
 model Product {
-  id          String     @id @default(auto()) @map("_id") @db.ObjectId
-  description String
-  imageUrl    String
-  name        String
-  category    String
-  details     String
-  price       Int
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-  CartItem    CartItem[]
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  description   String
+  imageUrl      String
+  name          String
+  category      String
+  details       String
+  price         Int
+  isLiked       Boolean       @default(false)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  CartItem      CartItem[]
+  FavouriteItem FavouriteItem[]
 
   @@map("products")
 }
-
 
 model Cart {
   id        String     @id @default(auto()) @map("_id") @db.ObjectId
@@ -43,6 +44,27 @@ model CartItem {
   cart      Cart    @relation(fields: [cartId], references: [id], onDelete: Cascade)
 
   @@map("cartitems")
+}
+
+model Favourites {
+  id        String          @id @default(auto()) @map("_id") @db.ObjectId
+  items     FavouriteItem[]
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+  User      User?           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String?         @db.ObjectId
+
+  @@map("favourites")
+}
+
+model FavouriteItem {
+  id              String      @id @default(auto()) @map("_id") @db.ObjectId
+  productId       String      @db.ObjectId
+  product         Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  FavouriteList   Favourites? @relation(fields: [favouriteListId], references: [id])
+  favouriteListId String?     @db.ObjectId
+
+  @@map("favouritetems")
 }
 
 model Account {
@@ -76,14 +98,15 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  id            String       @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
-  email         String?   @unique
+  email         String?      @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
   Cart          Cart[]
+  FavouriteList Favourites[]
 
   @@map("users")
 }
