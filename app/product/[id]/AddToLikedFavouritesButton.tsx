@@ -17,7 +17,7 @@ function AddToFavouritesButton({
   className,
   liked
 }: AddToFavouritesButtonProps) {
-  const [isLiked, setIsLiked] = useState(liked);
+  const [isLiked, setIsLiked] = useState(liked || false);
   const [isPending, startTransition] = useTransition();
   const [success, setSuccess] = useState(false);
   const [remove, setRemove] = useState(false);
@@ -33,7 +33,6 @@ function AddToFavouritesButton({
             setIsLiked(false);
             startTransition(async () => {
               await deleteFavourites(productId);
-              await updateProductsLikedStatus(productId)
             });
           } else {
             setIsLiked(true);
@@ -43,7 +42,7 @@ function AddToFavouritesButton({
               setSuccess(true);
             });
           }
-
+            updateProductsLikedStatus(productId, isLiked)
         }}
       >
         <Icon color={isLiked ? "red" : "red"} className="w-10" />

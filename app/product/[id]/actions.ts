@@ -36,7 +36,7 @@ export async function incrementProductQuantity(productId: string) {
     })
   }
 
-  revalidatePath("/product/[id]")
+  revalidatePath("/product/[id]", "page")
 }
 
 export async function updateFavourites(productId: string) {
@@ -59,7 +59,7 @@ export async function updateFavourites(productId: string) {
     })
   }
 
-  revalidatePath("/product/[id]")
+  revalidatePath("/product/[id]", "page")
 }
 
 export async function deleteFavourites(productId: string) {
@@ -79,15 +79,16 @@ export async function deleteFavourites(productId: string) {
   }
  
 
-  revalidatePath("/product/[id]")
+  revalidatePath("/product/[id]", "page")
 }
 
-export async function updateProductsLikedStatus(productId: string) {
+export async function updateProductsLikedStatus(productId: string, liked: boolean) {
+  revalidatePath("/product/[id]", "page")
   return prisma.product.update({
     where: {id: productId},
     data: {
-      isLiked: true
+      isLiked: !liked
     }
   });
- 
+  
 }
