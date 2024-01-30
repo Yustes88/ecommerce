@@ -1,9 +1,10 @@
 "use client";
 
+import {prisma} from "@/lib/db/prisma";
 import { HeartIcon } from "@heroicons/react/24/solid";
 import { HeartIcon as OutlinedHeart } from "@heroicons/react/24/outline";
 import { useState, useTransition } from "react";
-import { updateFavourites } from "./actions";
+import { deleteFavourites, updateFavourites } from "./actions";
 
 type AddToFavouritesButtonProps = {
   productId: string;
@@ -29,15 +30,19 @@ function AddToFavouritesButton({
         onClick={() => {
           if (isLiked) {
             setIsLiked(false);
+            startTransition(async () => {
+              await deleteFavourites(productId);
+              setSuccess(true);
+            });
           } else {
             setIsLiked(true);
+            setSuccess(false);
+            startTransition(async () => {
+              await updateFavourites(productId);
+              setSuccess(true);
+            });
           }
 
-          setSuccess(false);
-          startTransition(async () => {
-            await updateFavourites(productId);
-            setSuccess(true);
-          });
         }}
       >
         <Icon color={isLiked ? "red" : "red"} className="w-10" />

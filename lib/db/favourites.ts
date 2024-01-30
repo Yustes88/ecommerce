@@ -22,11 +22,11 @@ export async function createFavourites() {
 
   let newFavourites: Favourites;
   if (session) {
-    newFavourites = await prisma.cart.create({
+    newFavourites = await prisma.favourites.create({
       data: { id: session.user.id },
     });
   } else {
-    newFavourites = await prisma.cart.create({
+    newFavourites = await prisma.favourites.create({
       data: {},
     });
     cookies().set("localCartId", newFavourites.id);

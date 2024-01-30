@@ -45,17 +45,7 @@ export async function updateFavourites(productId: string) {
   const articleInCart = favourites.items.find(item => item.productId === productId) 
   
   if(articleInCart) {
-    await prisma.favourites.update({
-      where: {id: favourites.id},
-      data: {
-        items: {
-          update: {
-            where: {id: articleInCart.id},
-        data: {quantity: {increment: 1}}
-          }
-        }
-      }
-    })
+    return;
   } else {
     await prisma.favourites.update({
       where: {id: favourites.id},
@@ -69,6 +59,26 @@ export async function updateFavourites(productId: string) {
       }
     })
   }
+
+  revalidatePath("/product/[id]")
+}
+
+export async function deleteFavourites(productId: string) {
+  const favourites = (await getFavourites()) ?? (await createFavourites());
+
+  const articleInCart = favourites.items.find(item => item.productId === productId) 
+
+  if (articleInCart) {
+    await prisma.favourites.update({
+      where: {id: favourites.id},
+      data: {
+        items: {
+          delete: {id: articleInCart.id}
+        }
+      }
+    })
+  }
+ 
 
   revalidatePath("/product/[id]")
 }
