@@ -22,6 +22,7 @@ async function CartPage() {
           setProductQuantity={setProductQuantity}
         />
       ))}
+
       {!cart?.items.length && (
         <>
           <p>Seems like your cart is empty</p>
@@ -30,13 +31,14 @@ async function CartPage() {
           </Link>
         </>
       )}
-      {cart?.items.length && (
+
+      {cart?.items.length !== 0 && cart?.items !== undefined ? (
         <div className="flex flex-col items-end sm:items-center">
-          <p className="mb-3 font-bold">
-            Total: {formatPrice(cart?.subtotal)}
-          </p>
+          <p className="mb-3 font-bold">Total: {formatPrice(cart?.subtotal)}</p>
           <button className="btn btn-primary sm:w-[200px]">Checkout</button>
         </div>
+      ) : (
+        ""
       )}
     </div>
   );
