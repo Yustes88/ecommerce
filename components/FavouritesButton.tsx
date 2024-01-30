@@ -32,7 +32,7 @@ function FavouritesButton({favourites}: FavouritesButtonProps) {
             Favourites: {formatPrice(favourites?.subtotal || 0)}
           </span>
           <div className="card-actions">
-            <Link href='/cart' className="btn btn-primary btn-block"
+            <Link href='/favourite' className="btn btn-primary btn-block"
             onClick={closeDropDown}>View favourites</Link>
           </div>
         </div>
