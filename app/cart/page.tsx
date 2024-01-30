@@ -25,7 +25,7 @@ async function CartPage() {
 
       {!cart?.items.length && (
         <>
-          <p>Seems like your cart is empty</p>
+          <p>Oops, seems like your cart is empty.</p>
           <Link href="/" className="btn btn-primary">
             Start shopping now!
           </Link>
