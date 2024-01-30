@@ -10,16 +10,19 @@ type AddToFavouritesButtonProps = {
   productId: string;
   incrementProductQuantity: (productId: string) => Promise<void>;
   className?: string;
+  liked?: boolean;
 };
 
 function AddToFavouritesButton({
   productId,
   incrementProductQuantity,
   className,
+  liked
 }: AddToFavouritesButtonProps) {
-  const [isLiked, setIsLiked] = useState(false);
+  const [isLiked, setIsLiked] = useState(liked);
   const [isPending, startTransition] = useTransition();
   const [success, setSuccess] = useState(false);
+  const [remove, setRemove] = useState(false);
 
   const Icon = isLiked ? HeartIcon : OutlinedHeart;
 
@@ -30,9 +33,11 @@ function AddToFavouritesButton({
         onClick={() => {
           if (isLiked) {
             setIsLiked(false);
+            setRemove(false)
             startTransition(async () => {
               await deleteFavourites(productId);
-              setSuccess(true);
+              setRemove(true)
+              setSuccess(false);
             });
           } else {
             setIsLiked(true);
@@ -49,7 +54,7 @@ function AddToFavouritesButton({
       </button>
       {isPending && <span className="loading loading-spinner loading-sm" />}
       {!isPending && success && (
-        <span className="text-success">Added to favourites</span>
+        <span className="text-success">Done</span>
       )}
     </div>
   );
