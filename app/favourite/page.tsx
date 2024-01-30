@@ -9,11 +9,11 @@ export const metadata = {
   title: "Your Cart",
 };
 
-async function CartPage() {
+async function FavouritePage() {
   const favourites = await getFavourites();
 
   return (
-    <div className="my-4 flex flex-col items-center gap-4">
+    <div className="m-4 flex flex-col items-center gap-4">
       <h1 className="mb-6 text-3xl font-bold">My Favourites</h1>
       {favourites?.items.map((cartItem) => (
         <FavouriteEntry cartItem={cartItem} key={cartItem.id} />
@@ -30,4 +30,4 @@ async function CartPage() {
   );
 }
 
-export default CartPage;
+export default FavouritePage;

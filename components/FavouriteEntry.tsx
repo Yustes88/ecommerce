@@ -14,11 +14,8 @@ type CartEntryProps = {
   cartItem: FavouriteItemWithProduct;
 };
 
-function FavouriteEntry({
-  cartItem: { product },
-}: CartEntryProps) {
+function FavouriteEntry({ cartItem: { product } }: CartEntryProps) {
   const [isPending, startTransition] = useTransition();
-
 
   return (
     <div>
@@ -37,8 +34,13 @@ function FavouriteEntry({
           <div>Price: {formatPrice(product.price)}</div>
         </div>
       </div>
-      <AddToCartButton productId={product.id} incrementProductQuantity={incrementProductQuantity}/>
-      <AddToFavouritesButton productId={product.id} liked={true}/>
+      <div className="flex items-center justify-end gap-4">
+        <AddToFavouritesButton productId={product.id} liked={true} />
+        <AddToCartButton
+          productId={product.id}
+          incrementProductQuantity={incrementProductQuantity}
+        />
+      </div>
       <div className="divider" />
     </div>
   );

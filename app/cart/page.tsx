@@ -13,7 +13,7 @@ async function CartPage() {
   const cart = await getCart();
 
   return (
-    <div className="my-4 flex flex-col items-center justify-center gap-4">
+    <div className="m-4 flex flex-col items-center justify-center gap-4">
       <h1 className="mb-6 text-3xl font-bold">Shopping Cart</h1>
       {cart?.items.map((cartItem) => (
         <CartEntry
