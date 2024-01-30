@@ -8,14 +8,12 @@ import { deleteFavourites, updateFavourites } from "./actions";
 
 type AddToFavouritesButtonProps = {
   productId: string;
-  incrementProductQuantity: (productId: string) => Promise<void>;
   className?: string;
   liked?: boolean;
 };
 
 function AddToFavouritesButton({
   productId,
-  incrementProductQuantity,
   className,
   liked
 }: AddToFavouritesButtonProps) {
@@ -33,11 +31,8 @@ function AddToFavouritesButton({
         onClick={() => {
           if (isLiked) {
             setIsLiked(false);
-            setRemove(false)
             startTransition(async () => {
               await deleteFavourites(productId);
-              setRemove(true)
-              setSuccess(false);
             });
           } else {
             setIsLiked(true);

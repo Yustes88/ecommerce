@@ -14,7 +14,6 @@ export type FavouriteItemWithProduct = Prisma.FavouriteItemGetPayload<{
 
 export type FavouritesCart = FavouritesWithProducts & {
   size: number;
-  subtotal: number;
 };
 
 export async function createFavourites() {
@@ -36,7 +35,6 @@ export async function createFavourites() {
     ...newFavourites,
     items: [],
     size: 0,
-    subtotal: 0,
   };
 }
 
@@ -65,10 +63,6 @@ export async function getFavourites(): Promise<FavouritesCart | null> {
 
   return {
     ...favourites,
-    size: favourites.items.reduce((acc, item) => acc + item.quantity, 0),
-    subtotal: favourites.items.reduce(
-      (acc, item) => acc + item.quantity * item.product.price,
-      0,
-    ),
+    size: favourites.items.reduce((acc, item) => acc + 1, 0),
   };
 }

@@ -13,7 +13,7 @@ async function CartPage() {
 
   return (
     <div>
-      <h1 className="mb-6 text-3xl font-bold">Shopping Cart</h1>
+      <h1 className="mb-6 text-3xl font-bold">My Favourites</h1>
       {favourites?.items.map((cartItem) => (
         <FavouriteEntry
           cartItem={cartItem}

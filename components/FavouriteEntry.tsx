@@ -1,5 +1,6 @@
 "use client";
 
+import AddToCartButton from "@/app/product/[id]/AddToCartButton";
 import AddToFavouritesButton from "@/app/product/[id]/AddToLikedFavouritesButton";
 import { incrementProductQuantity } from "@/app/product/[id]/actions";
 import { CartItemWithProduct } from "@/lib/db/cart";
@@ -36,8 +37,9 @@ function FavouriteEntry({
           <div>Price: {formatPrice(product.price)}</div>
         </div>
       </div>
+      <AddToCartButton productId={product.id} incrementProductQuantity={incrementProductQuantity}/>
+      <AddToFavouritesButton productId={product.id} liked={true}/>
       <div className="divider" />
-      <AddToFavouritesButton productId={product.id} incrementProductQuantity={incrementProductQuantity} liked={true}/>
     </div>
   );
 }

@@ -60,7 +60,6 @@ model FavouriteItem {
   id              String      @id @default(auto()) @map("_id") @db.ObjectId
   productId       String      @db.ObjectId
   product         Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
-  quantity        Int
   FavouriteList   Favourites? @relation(fields: [favouriteListId], references: [id])
   favouriteListId String?     @db.ObjectId
 
