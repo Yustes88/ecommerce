@@ -27,7 +27,7 @@ export default function RootLayout({
       >
         <SessionProvider>
           <NavBar />
-          <main className="m-auto flex-grow">{children}</main>
+          <main className="flex-grow">{children}</main>
           <Footer />
         </SessionProvider>
       </body>
