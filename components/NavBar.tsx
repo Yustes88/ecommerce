@@ -31,7 +31,7 @@ async function NavBar() {
                         Home
                     </Link>
                 </div>
-                <div className="flex-none gap-2">
+                <div className="flex gap-2">
                     <form action={searchProducts}>
                         <div className="form-control">
                             <input name="searchQuery" placeholder="Search" className="input input-bordered w-full min-w-[100px]" type="text" />

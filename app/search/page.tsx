@@ -31,7 +31,7 @@ async function SearchPage({searchParams: {query}}: SearchPageProps) {
         return <div className="text-center">No product found</div>
     }
     return(
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 m-4 md:grid-cols-2 xl:grid-cols-4">
             {products.map(product => (
                 <ProductCardPreview product={product} key={product.id}/>
             ))}
