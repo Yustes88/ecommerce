@@ -1,5 +1,6 @@
 import AboutHero from "@/components/AboutHero";
-import FeaturesHero from "@/components/FeaturesHero";
+import FeaturesAbout from "@/components/FeaturesAbout";
+import TeamAbout from "@/components/TeamAbout";
 
 
 export const metadata = {
@@ -11,7 +12,8 @@ async function AboutPage() {
   return (
     <>
    <AboutHero/>
-   <FeaturesHero/>
+   <FeaturesAbout/>
+   <TeamAbout/>
     </>
   );
 }
