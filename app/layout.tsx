@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={clsx(
-          `${inter.className}, flex min-h-screen flex-col bg-white`,
+          `${inter.className}, flex min-h-screen flex-col`,
         )}
       >
         <SessionProvider>
