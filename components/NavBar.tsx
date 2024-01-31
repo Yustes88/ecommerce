@@ -24,7 +24,7 @@ async function NavBar() {
   const session = await getServerSession(authOptions);
 
   return (
-    <div className="bg-[#f0f1f1]">
+    <div className="bg-[#eddb9841]">
       <div className="navbar m-auto max-w-7xl flex-col gap-2 sm:flex-row">
         <div className="flex-1">
           <div>
