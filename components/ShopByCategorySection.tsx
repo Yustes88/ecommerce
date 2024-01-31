@@ -31,9 +31,9 @@ export default function ShopByCategory() {
                   </span>
                   <span
                     aria-hidden="true"
-                    className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"
+                    className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#beb287c9] "
                   />
-                  <span className="relative mt-auto text-center text-xl capitalize font-bold text-white">
+                  <span className="relative mt-auto text-center text-xl capitalize font-bold text-gray-800">
                     {category.name}
                   </span>
                 </a>
