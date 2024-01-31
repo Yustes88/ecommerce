@@ -8,42 +8,54 @@ import { authOptions } from "@/utils/authOptions";
 import FavouritesButton from "./FavouritesButton";
 import { getFavourites } from "@/lib/db/favourites";
 
-async function searchProducts(formData:FormData) {
-    "use server"
+async function searchProducts(formData: FormData) {
+  "use server";
 
-    const searchQuery = formData.get('searchQuery')?.toString();
+  const searchQuery = formData.get("searchQuery")?.toString();
 
-    if(searchQuery) {
-        redirect('/search?query=' + searchQuery)
-    }
+  if (searchQuery) {
+    redirect("/search?query=" + searchQuery);
+  }
 }
 
 async function NavBar() {
-    const cart = await getCart()
-    const favourites = await getFavourites()
-    const session = await getServerSession(authOptions)
+  const cart = await getCart();
+  const favourites = await getFavourites();
+  const session = await getServerSession(authOptions);
 
-    return(
-        <div className="bg-base-100">
-            <div className="navbar max-w-7xl m-auto flex-col sm:flex-row gap-2">
-                <div className="flex-1">
-                    <Link href='/' className="btn btn-ghost text-xl normal-case">
-                        Home
-                    </Link>
-                </div>
-                <div className="flex gap-2">
-                    <form action={searchProducts}>
-                        <div className="form-control">
-                            <input name="searchQuery" placeholder="Search" className="input input-bordered w-full min-w-[100px]" type="text" />
-                        </div>
-                    </form>
-                    <FavouritesButton favourites={favourites}/>
-                    <ShoppingCartButton cart={cart}/>
-                    <UserMenuButton session={session}/>
-                </div>
-            </div>
+  return (
+    <div className="bg-base-100">
+      <div className="navbar m-auto max-w-7xl flex-col gap-2 sm:flex-row">
+        <div className="flex-1">
+          <div>
+            <Link href="/" className="btn btn-ghost text-xl normal-case">
+              Home
+            </Link>
+          </div>
+          <div className="flex-1">
+            <Link href="/about" className="btn btn-ghost text-xl normal-case">
+              About
+            </Link>
+          </div>
         </div>
-    )
+        <div className="flex gap-2">
+          <form action={searchProducts}>
+            <div className="form-control">
+              <input
+                name="searchQuery"
+                placeholder="Search"
+                className="input input-bordered w-full min-w-[100px]"
+                type="text"
+              />
+            </div>
+          </form>
+          <FavouritesButton favourites={favourites} />
+          <ShoppingCartButton cart={cart} />
+          <UserMenuButton session={session} />
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default NavBar;
