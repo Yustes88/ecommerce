@@ -1,20 +1,15 @@
 "use client";
 
-import { Product } from "@prisma/client";
 import Image from "next/image";
 
-type ProductCardFullProps = {
-  product: Product;
-};
+import { Product } from "@prisma/client";
+import formatPrice from "@/lib/db/format";
 
-import { useState } from "react";
-import { RadioGroup } from "@headlessui/react";
 import AddToCartButton from "@/app/product/[id]/AddToCartButton";
 import { incrementProductQuantity } from "@/app/product/[id]/actions";
-import ProductDetails from "./ProductDetails";
-import formatPrice from "@/lib/db/format";
-import { sizes } from "@/data/data";
 import AddToFavouritesButton from "@/app/product/[id]/AddToLikedFavouritesButton";
+
+import ProductDetails from "./ProductDetails";
 
 // const product = {
 //   id: "dvfhosidvposdjpv0",
@@ -40,15 +35,17 @@ import AddToFavouritesButton from "@/app/product/[id]/AddToLikedFavouritesButton
 //   `,
 // };
 
-export default function ProductCardFull({ product }: ProductCardFullProps) {
-  const [selectedSize, setSelectedSize] = useState(sizes[2].name);
+type ProductCardFullProps = {
+  product: Product;
+};
 
+export default function ProductCardFull({ product }: ProductCardFullProps) {
   return (
-    <div className="bg-white">
+    <div>
       <div className="pb-16 pt-6 sm:pb-24">
         <nav
           aria-label="Breadcrumb"
-          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+          className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8"
         >
           <div role="list" className="flex items-center space-x-4">
             <div className="flex items-center">
@@ -63,11 +60,11 @@ export default function ProductCardFull({ product }: ProductCardFullProps) {
             </div>
           </div>
         </nav>
-        <div className="mx-auto mt-8 max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+        <div className="mx-auto mt-8 max-w-2xl px-4 sm:px-6 lg:max-w-5xl lg:px-8">
           <div className="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
             <div className="lg:col-span-5 lg:col-start-8">
               <div className="flex justify-between">
-                <h1 className="text-xl font-medium capitalize text-gray-900">
+                <h1 className="text-2xl font-bold capitalize text-gray-900">
                   {product.name}
                 </h1>
                 <p className="text-xl font-medium text-gray-900">
@@ -122,9 +119,9 @@ export default function ProductCardFull({ product }: ProductCardFullProps) {
                 <Image
                   src={product.imageUrl}
                   alt={product.name}
-                  className="h-[40rem] object-cover"
-                  width={800}
-                  height={800}
+                  className=" object-cover"
+                  width={1200}
+                  height={400}
                 />
               </div>
             </div>
@@ -140,17 +137,17 @@ export default function ProductCardFull({ product }: ProductCardFullProps) {
                     ))}
                   </ul>
                 </div>
-                  <AddToCartButton
-                    incrementProductQuantity={incrementProductQuantity}
-                    productId={product.id}
-                    className={
-                      "mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                    }
-                  />
-                  <AddToFavouritesButton
-                    productId={product.id}
-                    liked={product.isLiked}
-                  />
+                <AddToCartButton
+                  incrementProductQuantity={incrementProductQuantity}
+                  productId={product.id}
+                  className={
+                    "mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-[#53453c] hover:bg-[#534555] focus-visible:outline-[#534555] px-8 py-3 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2"
+                  }
+                />
+                <AddToFavouritesButton
+                  productId={product.id}
+                  liked={product.isLiked}
+                />
               </div>
 
               {/* Product details */}

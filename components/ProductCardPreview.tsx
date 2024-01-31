@@ -11,7 +11,7 @@ function ProductCardPreview({ product }: ProductCardPreviewProps) {
     const isNew = Date.now() - new Date(product.createdAt).getTime() < (1000 * 60 * 60 * 24 *7)
   return (
     <Link
-      className="card relative w-full bg-rose-50 transition-shadow hover:shadow-xl"
+      className="card relative w-full bg-[#f0f1f1] transition-shadow hover:shadow-xl"
       href={`/product/${product.id}`}
     >
         <figure>

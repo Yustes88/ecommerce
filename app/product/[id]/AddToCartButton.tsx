@@ -14,7 +14,7 @@ function AddToCartButton({productId, incrementProductQuantity, className}: AddTo
 
     return(
         <div className="flex items-center gap-2 ">
-            <button className={`btn btn-primary ${className}`} onClick={() => {
+            <button className={`btn btn-secondary bg-[#53453c] hover:bg-[#534555] focus-visible:outline-[#534555] ${className}`} onClick={() => {
                 setSuccess(false)
                 startTransition(async () => {
                     await incrementProductQuantity(productId);

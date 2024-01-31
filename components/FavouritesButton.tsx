@@ -22,7 +22,7 @@ function FavouritesButton({favourites}: FavouritesButtonProps) {
     <Link href='/favourite' className="">
       <label tabIndex={0} className="btn btn-circle btn-ghost">
         <div className="indicator">
-            <HeartIcon className="w-8"/>
+            <HeartIcon className="w-8 text-red-700"/>
           <span className="badge badge-sm indicator-item">{favourites?.size || 0}</span>
         </div>
       </label>
