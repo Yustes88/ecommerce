@@ -1,4 +1,5 @@
 import HeroSection from "@/components/HeroSection";
+import Marquee from "@/components/Marquee";
 import PaginationBar from "@/components/PaginationBar";
 import ProductCardPreview from "@/components/ProductCardPreview";
 import ProductsList from "@/components/ProductsList";
@@ -31,6 +32,7 @@ export default async function Home({
 
   return (
     <>
+      <Marquee/>
       <HeroSection />
       <ShopByCategory />
       <ProductsList
