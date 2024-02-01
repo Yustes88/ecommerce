@@ -1,30 +1,40 @@
-'use client'
+"use client";
 
-import { useState, useTransition } from "react"
+import { useState, useTransition } from "react";
+import toast from "react-hot-toast";
 
 type AddToCartButtonProps = {
-    productId: string,
-    incrementProductQuantity: (productId: string) => Promise<void>,
-    className?: string,
-}
+  productId: string;
+  incrementProductQuantity: (productId: string) => Promise<void>;
+  className?: string;
+};
 
-function AddToCartButton({productId, incrementProductQuantity, className}: AddToCartButtonProps) {
-    const [isPending, startTransition] = useTransition();
-    const [success, setSuccess] = useState(false);
+function AddToCartButton({
+  productId,
+  incrementProductQuantity,
+  className,
+}: AddToCartButtonProps) {
+  const [isPending, startTransition] = useTransition();
+  const [success, setSuccess] = useState(false);
 
-    return(
-        <div className="flex items-center gap-2 mt-4">
-            <button className={`btn btn-secondary bg-[#53453c] text-white hover:bg-[#534555] focus-visible:outline-[#534555] ${className}`} onClick={() => {
-                setSuccess(false)
-                startTransition(async () => {
-                    await incrementProductQuantity(productId);
-                    setSuccess(true)
-                })
-            }}>Add to Cart</button>
-            {isPending && <span className="loading loading-spinner loading-sm"/>}
-            {!isPending && success && <span className="text-success">Added to cart</span>}
-        </div>
-    )
+  return (
+    <div className="mt-4 flex items-center gap-2">
+      <button
+        className={`btn btn-secondary bg-[#53453c] text-white hover:bg-[#534555] focus-visible:outline-[#534555] ${className}`}
+        onClick={() => {
+          setSuccess(false);
+          startTransition(async () => {
+            await incrementProductQuantity(productId);
+            setSuccess(true);
+              toast.success("The product is added!");
+          });
+        }}
+      >
+        Add to Cart
+      </button>
+      {isPending && <span className="loading loading-spinner loading-sm" />}
+    </div>
+  );
 }
 
 export default AddToCartButton;
