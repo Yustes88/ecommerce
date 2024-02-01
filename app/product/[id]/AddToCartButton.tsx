@@ -26,7 +26,9 @@ function AddToCartButton({
           startTransition(async () => {
             await incrementProductQuantity(productId);
             setSuccess(true);
-              toast.success("The product is added!");
+            if(success) {
+                toast.success("The product is added to the cart!");
+            }
           });
         }}
       >
