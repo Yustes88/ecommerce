@@ -35,7 +35,15 @@ async function CartPage() {
       {cart?.items.length !== 0 && cart?.items !== undefined ? (
         <div className="flex flex-col items-end sm:items-center">
           <p className="mb-3 font-bold">Total: {formatPrice(cart?.subtotal)}</p>
-          <button className="btn btn-primary sm:w-[200px]">Checkout</button>
+          <div className="mb-2 flex flex-col justify-center items-center">
+            <p className="mb-1">
+              We are sorry, checkout is temporary unavailable. We are already working on an issue.
+            </p>
+            <p>Please come back later. Your cart is saved.</p>
+          </div>
+          <button className="btn btn-primary sm:w-[200px]" disabled>
+            Checkout
+          </button>
         </div>
       ) : (
         ""

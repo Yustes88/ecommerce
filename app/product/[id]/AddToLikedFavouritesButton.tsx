@@ -5,6 +5,7 @@ import { HeartIcon } from "@heroicons/react/24/solid";
 import { HeartIcon as OutlinedHeart } from "@heroicons/react/24/outline";
 import { useState, useTransition } from "react";
 import { deleteFavourites, updateFavourites, updateProductsLikedStatus } from "./actions";
+import toast from "react-hot-toast";
 
 type AddToFavouritesButtonProps = {
   productId: string;
@@ -33,6 +34,7 @@ function AddToFavouritesButton({
             setIsLiked(false);
             startTransition(async () => {
               await deleteFavourites(productId);
+              toast.error('The item is removed from favourite list')
             });
           } else {
             setIsLiked(true);
@@ -40,6 +42,7 @@ function AddToFavouritesButton({
             startTransition(async () => {
               await updateFavourites(productId);
               setSuccess(true);
+              toast.success('The item is added to the favourite list')
             });
           }
             updateProductsLikedStatus(productId, isLiked)
@@ -48,9 +51,6 @@ function AddToFavouritesButton({
         <Icon color={isLiked ? "red" : "red"} className="w-10" />
       </button>
       {isPending && <span className="loading loading-spinner loading-sm" />}
-      {!isPending && success && (
-        <span className="text-success">Done</span>
-      )}
     </div>
   );
 }
