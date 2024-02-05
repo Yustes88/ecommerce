@@ -49,7 +49,7 @@ async function AddProductForm() {
     <form action={addProduct}>
       <div className="space-y-12">
         <div className="pb-12">
-          <h2 className="text-4xl font-semibold leading-7 text-gray-900">
+          <h2 className="text-4xl font-semibold leading-7">
             Add a new product
           </h2>
           <p className="mt-4 text-sm leading-6 text-gray-600">

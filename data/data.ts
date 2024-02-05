@@ -1,4 +1,4 @@
-import { ArrowPathIcon, CloudArrowUpIcon, FingerPrintIcon, LockClosedIcon } from '@heroicons/react/24/outline'
+import { CheckBadgeIcon, ClockIcon, CreditCardIcon, HeartIcon } from '@heroicons/react/24/solid';
 
 export const categories = [
   {
@@ -75,24 +75,24 @@ export const features = [
     name: 'Timeless Designs',
     description:
       'Our jewelry collection showcases intricate designs that transcend trends, allowing you to cherish each piece for years to come. Every detail is carefully considered, from the delicate filigree patterns to the sparkling gemstones, ensuring that your jewelry reflects your timeless elegance.',
-    icon: CloudArrowUpIcon,
+    icon: ClockIcon,
   },
   {
     name: 'Premium Materials',
     description:
       'We believe in using only the finest materials to create jewelry that is both beautiful and durable. Our pieces are crafted from ethically sourced precious metals like gold, silver, and platinum, ensuring that they will remain cherished heirlooms for generations to come.',
-    icon: LockClosedIcon,
+    icon: CheckBadgeIcon,
   },
   {
     name: 'Affordable Luxury',
     description:
       'Experience the exquisite quality of fine jewelry without the extraordinary price tag. Our pieces are crafted with premium materials and meticulous attention to detail, making them an accessible gateway to the world of luxury.',
-    icon: ArrowPathIcon,
+    icon: CreditCardIcon,
   },
   {
     name: 'Made with Love',
     description:
       'Each piece we create is not just an accessory; it is an expression of passion and dedication. We pour our hearts and souls into crafting timeless pieces that resonate with your unique story.',
-    icon: FingerPrintIcon,
+    icon: HeartIcon,
   },
 ]
