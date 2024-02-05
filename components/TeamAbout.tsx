@@ -1,31 +1,31 @@
 const people = [
     {
-      name: 'Leonard Krasner',
-      role: 'Senior Designer',
+      name: 'Leonna Krasner',
+      role: 'Jewelry Senior Designer',
       imageUrl:
         'https://images.unsplash.com/photo-1543269664-56d93c1b41a6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvbGxlYWd1ZXxlbnwwfHwwfHx8MA%3D%3D',
-      bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
+      bio: 'Creates original jewelry concepts, sketches, and technical drawings. Possesses a strong understanding of trends, materials, and manufacturing processes. Creative, trendsetter, technical.',
     },
     {
-      name: 'Leonard Krasner',
-      role: 'Senior Designer',
+      name: 'Kate Lawernce',
+      role: 'Production Manager',
       imageUrl:
         'https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGNvbGxlYWd1ZXxlbnwwfHwwfHx8MA%3D%3D',
-      bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
+      bio: 'Oversees the entire production process, ensuring quality, efficiency, and adherence to timelines. Requires strong organizational and communication skills. Organized, leader, communicator.',
     },
     {
-      name: 'Leonard Krasner',
-      role: 'Senior Designer',
+      name: 'Kim Bonnet',
+      role: 'Jewelry Sales Associate',
       imageUrl:
         'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D',
-      bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
+      bio: 'Assists customers in selecting and purchasing jewelry. Provides product knowledge, excellent customer service, and upselling opportunities. Personable, sales-driven, customer-focused.',
     },
     {
-      name: 'Leonard Krasner',
-      role: 'Senior Designer',
+      name: 'Vanessa Morgan',
+      role: 'Customer Service Representative',
       imageUrl:
         'https://images.unsplash.com/photo-1554727242-741c14fa561c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D',
-      bio: 'Quia illum aut in beatae. Possimus dolores aliquid accusantium aut in ut non assumenda. Enim iusto molestias aut deleniti eos aliquid magnam molestiae. At et non possimus ab. Magni labore molestiae nulla qui.',
+      bio: 'Addresses customer inquiries and concerns related to jewelry purchases and repairs. Requires excellent communication and problem-solving skills. Customer-focused, problem-solver, communicator.',
     },
     // More people...
   ]

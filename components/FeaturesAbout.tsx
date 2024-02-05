@@ -14,15 +14,15 @@ const features = [
     icon: LockClosedIcon,
   },
   {
-    name: 'Price and Quality',
+    name: 'Affordable Luxury',
     description:
-      'Quisque est vel vulputate cursus. Risus proin diam nunc commodo. Lobortis auctor congue commodo diam neque.',
+      'Experience the exquisite quality of fine jewelry without the extraordinary price tag. Our pieces are crafted with premium materials and meticulous attention to detail, making them an accessible gateway to the world of luxury.',
     icon: ArrowPathIcon,
   },
   {
-    name: 'Advanced security',
+    name: 'Made with Love',
     description:
-      'Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.',
+      'Each piece we create is not just an accessory; it is an expression of passion and dedication. We pour our hearts and souls into crafting timeless pieces that resonate with your unique story.',
     icon: FingerPrintIcon,
   },
 ]
