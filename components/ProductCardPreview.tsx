@@ -18,7 +18,7 @@ function ProductCardPreview({ product }: ProductCardPreviewProps) {
             <Image src={product.imageUrl} className="h-48 object-cover" alt={product.name} width={800} height={400}/>
         </figure>
       <div className="card-body">
-        <h2 className="card-title capitalize">
+        <h2 className="card-title font-bold capitalize">
             {product.name}
             </h2>
         <PriceTag price={product.price}/>

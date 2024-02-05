@@ -25,13 +25,13 @@ export default function HeroSection() {
         </div>
         <div className="mx-auto max-w-2xl pb-16">
           <div className="text-center md:px-2 flex flex-col gap-20 pt-8">
-            <h1 className="text-4xl font-bold tracking-tight text-black sm:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
               Shine Treasures
             </h1>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
                 href="/category/earrings"
-                className="rounded-md bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
+                className="rounded-md bg-[#353839] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
               >
                 Start shopping
               </a>
