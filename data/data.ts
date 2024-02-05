@@ -1,4 +1,4 @@
-import { randomUUID } from "crypto";
+import { ArrowPathIcon, CloudArrowUpIcon, FingerPrintIcon, LockClosedIcon } from '@heroicons/react/24/outline'
 
 export const categories = [
   {
@@ -39,12 +39,60 @@ export const policies = [
 "Supporting local business",
 ];
 
+export const people = [
+  {
+    name: 'Leonna Krasner',
+    role: 'Jewelry Senior Designer',
+    imageUrl:
+      'https://images.unsplash.com/photo-1543269664-56d93c1b41a6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvbGxlYWd1ZXxlbnwwfHwwfHx8MA%3D%3D',
+    bio: 'Creates original jewelry concepts, sketches, and technical drawings. Possesses a strong understanding of trends, materials, and manufacturing processes. Creative, trendsetter, technical.',
+  },
+  {
+    name: 'Kate Lawernce',
+    role: 'Production Manager',
+    imageUrl:
+      'https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGNvbGxlYWd1ZXxlbnwwfHwwfHx8MA%3D%3D',
+    bio: 'Oversees the entire production process, ensuring quality, efficiency, and adherence to timelines. Requires strong organizational and communication skills. Organized, leader, communicator.',
+  },
+  {
+    name: 'Kim Bonnet',
+    role: 'Jewelry Sales Associate',
+    imageUrl:
+      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D',
+    bio: 'Assists customers in selecting and purchasing jewelry. Provides product knowledge, excellent customer service, and upselling opportunities. Personable, sales-driven, customer-focused.',
+  },
+  {
+    name: 'Vanessa Morgan',
+    role: 'Customer Service Representative',
+    imageUrl:
+      'https://images.unsplash.com/photo-1554727242-741c14fa561c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D',
+    bio: 'Addresses customer inquiries and concerns related to jewelry purchases and repairs. Requires excellent communication and problem-solving skills. Customer-focused, problem-solver, communicator.',
+  },
+]
 
-export const sizes = [
-      { name: "XXS", inStock: true },
-      { name: "XS", inStock: true },
-      { name: "S", inStock: true },
-      { name: "M", inStock: true },
-      { name: "L", inStock: true },
-      { name: "XL", inStock: false },
-    ]
+export const features = [
+  {
+    name: 'Timeless Designs',
+    description:
+      'Our jewelry collection showcases intricate designs that transcend trends, allowing you to cherish each piece for years to come. Every detail is carefully considered, from the delicate filigree patterns to the sparkling gemstones, ensuring that your jewelry reflects your timeless elegance.',
+    icon: CloudArrowUpIcon,
+  },
+  {
+    name: 'Premium Materials',
+    description:
+      'We believe in using only the finest materials to create jewelry that is both beautiful and durable. Our pieces are crafted from ethically sourced precious metals like gold, silver, and platinum, ensuring that they will remain cherished heirlooms for generations to come.',
+    icon: LockClosedIcon,
+  },
+  {
+    name: 'Affordable Luxury',
+    description:
+      'Experience the exquisite quality of fine jewelry without the extraordinary price tag. Our pieces are crafted with premium materials and meticulous attention to detail, making them an accessible gateway to the world of luxury.',
+    icon: ArrowPathIcon,
+  },
+  {
+    name: 'Made with Love',
+    description:
+      'Each piece we create is not just an accessory; it is an expression of passion and dedication. We pour our hearts and souls into crafting timeless pieces that resonate with your unique story.',
+    icon: FingerPrintIcon,
+  },
+]

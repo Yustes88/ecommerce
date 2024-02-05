@@ -1,34 +1,6 @@
-const people = [
-    {
-      name: 'Leonna Krasner',
-      role: 'Jewelry Senior Designer',
-      imageUrl:
-        'https://images.unsplash.com/photo-1543269664-56d93c1b41a6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvbGxlYWd1ZXxlbnwwfHwwfHx8MA%3D%3D',
-      bio: 'Creates original jewelry concepts, sketches, and technical drawings. Possesses a strong understanding of trends, materials, and manufacturing processes. Creative, trendsetter, technical.',
-    },
-    {
-      name: 'Kate Lawernce',
-      role: 'Production Manager',
-      imageUrl:
-        'https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGNvbGxlYWd1ZXxlbnwwfHwwfHx8MA%3D%3D',
-      bio: 'Oversees the entire production process, ensuring quality, efficiency, and adherence to timelines. Requires strong organizational and communication skills. Organized, leader, communicator.',
-    },
-    {
-      name: 'Kim Bonnet',
-      role: 'Jewelry Sales Associate',
-      imageUrl:
-        'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D',
-      bio: 'Assists customers in selecting and purchasing jewelry. Provides product knowledge, excellent customer service, and upselling opportunities. Personable, sales-driven, customer-focused.',
-    },
-    {
-      name: 'Vanessa Morgan',
-      role: 'Customer Service Representative',
-      imageUrl:
-        'https://images.unsplash.com/photo-1554727242-741c14fa561c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D',
-      bio: 'Addresses customer inquiries and concerns related to jewelry purchases and repairs. Requires excellent communication and problem-solving skills. Customer-focused, problem-solver, communicator.',
-    },
-    // More people...
-  ]
+import { people } from "@/data/data"
+import Image from "next/image"
+
   
   export default function TeamAbout() {
     return (
@@ -47,7 +19,7 @@ const people = [
           >
             {people.map((person) => (
               <li key={person.name} className="flex flex-col gap-6 xl:flex-row">
-                <img className="aspect-[4/5] w-52 flex-none rounded-2xl object-cover" src={person.imageUrl} alt="" />
+                <Image className="aspect-[4/5] w-52 flex-none rounded-2xl object-cover" src={person.imageUrl} alt="Team photo" width={600} height={600}/>
                 <div className="flex-auto">
                   <h3 className="text-lg font-semibold leading-8 tracking-tight text-gray-900">{person.name}</h3>
                   <p className="text-base leading-7 text-gray-600">{person.role}</p>
