@@ -2,6 +2,7 @@ import HeroSection from "@/components/HeroSection";
 import Marquee from "@/components/Marquee";
 import ProductsList from "@/components/ProductsList";
 import ShopByCategory from "@/components/ShopByCategorySection";
+
 import { prisma } from "@/lib/db/prisma";
 
 type HomeProps = {
@@ -16,18 +17,17 @@ export default async function Home({
 
   const totalItemCount = await prisma.product.count();
 
-  const totalPages = Math.ceil((totalItemCount) / pageSize);
+  const totalPages = Math.ceil(totalItemCount / pageSize);
 
   const products = await prisma.product.findMany({
     orderBy: { id: "desc" },
-    skip:
-      (currentPage - 1) * pageSize + (currentPage),
+    skip: (currentPage - 1) * pageSize + currentPage,
     take: pageSize,
   });
 
   return (
     <>
-      <Marquee/>
+      <Marquee />
       <HeroSection />
       <ShopByCategory />
       <ProductsList
