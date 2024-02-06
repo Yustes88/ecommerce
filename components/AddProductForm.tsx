@@ -1,9 +1,12 @@
-import { prisma } from "@/lib/db/prisma";
 import { redirect } from "next/navigation";
-import Button from "./Button";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/utils/authOptions";
+
+import Button from "./Button";
+
 import { categories } from "@/data/data";
+
+import { authOptions } from "@/utils/authOptions";
+import { prisma } from "@/lib/db/prisma";
 
 async function addProduct(formData: FormData) {
   "use server";
@@ -25,7 +28,7 @@ async function addProduct(formData: FormData) {
     throw Error("Missing required filed");
   }
 
-  for(let i = 0; i < 50; i++) {
+  for (let i = 0; i < 50; i++) {
     await prisma.product.create({
       data: {
         name,
@@ -37,7 +40,7 @@ async function addProduct(formData: FormData) {
       },
     });
   }
-  
+
   redirect("/");
 }
 
@@ -196,7 +199,7 @@ async function AddProductForm() {
         <Button
           type={"submit"}
           spinner="loading loading-spinner loading-xs text-neutral pr-2"
-          className="rounded-md bg-[#53453c] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#534555] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#534555]}"
+          className="focus-visible:outline-[#534555]} rounded-md bg-[#53453c] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#534555] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
         >
           Save
         </Button>

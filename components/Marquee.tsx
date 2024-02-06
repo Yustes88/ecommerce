@@ -1,20 +1,4 @@
-import React from "react";
-
-const marquees = [
-  "Absolute Inspiration",
-  "Sparkle & Shine",
-  "Glittering Treasures",
-  "Rings",
-  "Opulent Ornaments",
-  "Braclettes",
-  "Shimmering Elegance",
-  "Necklaces",
-  "Exquisite Adornments",
-  "Earrings",
-  "Impressive Details",
-  "Genuine Impression",
-  "Longlasting Effect",
-];
+import { marquees } from "@/data/data";
 
 export const Marquee = () => {
   return (
@@ -29,7 +13,7 @@ export const Marquee = () => {
         })}
       </div>
 
-      <div className="animate-marquee2 absolute top-0 whitespace-nowrap py-5 text-sm">
+      <div className="absolute top-0 animate-marquee2 whitespace-nowrap py-5 text-sm">
         {marquees.map((marquee) => {
           return (
             <span key={marquee} className="mx-2">

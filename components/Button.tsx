@@ -13,7 +13,12 @@ type ButtonProps = {
 function Button({ children, type, className, spinner, ...props }: ButtonProps) {
   const { pending } = useFormStatus();
   return (
-    <button {...props} type={type} className={`${className}`} disabled={pending}>
+    <button
+      {...props}
+      type={type}
+      className={`${className}`}
+      disabled={pending}
+    >
       {pending && <span className={spinner} />}
       {children}
     </button>

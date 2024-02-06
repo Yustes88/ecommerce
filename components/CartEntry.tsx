@@ -1,10 +1,11 @@
 "use client";
 
-import { CartItemWithProduct } from "@/lib/db/cart";
-import formatPrice from "@/lib/db/format";
 import Image from "next/image";
 import Link from "next/link";
 import { useTransition } from "react";
+
+import { CartItemWithProduct } from "@/lib/db/cart";
+import formatPrice from "@/lib/db/format";
 
 type CartEntryProps = {
   cartItem: CartItemWithProduct;
@@ -53,7 +54,7 @@ function CartEntry({
                 });
               }}
             >
-                <option value={0}>0 (Remove)</option>
+              <option value={0}>0 (Remove)</option>
               {quantityOptions}
             </select>
           </div>

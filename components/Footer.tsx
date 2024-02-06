@@ -1,6 +1,5 @@
 import { navigation } from "@/data/data";
 
-
 export default function Footer() {
   return (
     <footer className="bg-[#353839]">

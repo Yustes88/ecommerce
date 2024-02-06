@@ -146,3 +146,19 @@ export const navigation = [
     ),
   },
 ];
+
+export const marquees = [
+  "Absolute Inspiration",
+  "Sparkle & Shine",
+  "Glittering Treasures",
+  "Rings",
+  "Opulent Ornaments",
+  "Braclettes",
+  "Shimmering Elegance",
+  "Necklaces",
+  "Exquisite Adornments",
+  "Earrings",
+  "Impressive Details",
+  "Genuine Impression",
+  "Longlasting Effect",
+];

@@ -1,8 +1,11 @@
-import { prisma } from "@/lib/db/prisma";
-import { authOptions } from "@/utils/authOptions";
-import { Favourites, Prisma } from "@prisma/client";
 import { getServerSession } from "next-auth";
 import { cookies } from "next/dist/client/components/headers";
+
+import { authOptions } from "@/utils/authOptions";
+
+import { prisma } from "@/lib/db/prisma";
+
+import { Favourites, Prisma } from "@prisma/client";
 
 export type FavouritesWithProducts = Prisma.FavouritesGetPayload<{
   include: { items: { include: { product: true } } };

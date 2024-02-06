@@ -1,29 +1,24 @@
 "use client";
 
-import { ShoppingCart } from "@/lib/db/cart";
-import { FavouritesCart } from "@/lib/db/favourites";
-import formatPrice from "@/lib/db/format";
-import { HeartIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
+
+import { HeartIcon } from "@heroicons/react/24/solid";
+
+import { FavouritesCart } from "@/lib/db/favourites";
 
 type FavouritesButtonProps = {
   favourites: FavouritesCart | null;
 };
 
-function FavouritesButton({favourites}: FavouritesButtonProps) {
-  function closeDropDown() {
-    const elem = document.activeElement as HTMLElement
-    if(elem) {
-      elem.blur()
-    }
-  } 
-
+function FavouritesButton({ favourites }: FavouritesButtonProps) {
   return (
-    <Link href='/favourite' className="">
+    <Link href="/favourite" className="">
       <label tabIndex={0} className="btn btn-circle btn-ghost">
         <div className="indicator">
-            <HeartIcon className="w-8 text-red-700"/>
-          <span className="badge badge-sm indicator-item">{favourites?.size || 0}</span>
+          <HeartIcon className="w-8 text-red-700" />
+          <span className="badge indicator-item badge-sm">
+            {favourites?.size || 0}
+          </span>
         </div>
       </label>
     </Link>

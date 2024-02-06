@@ -1,11 +1,14 @@
-import { getCart } from "@/lib/db/cart";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth";
+
 import ShoppingCartButton from "./ShoppingCartButton";
 import UserMenuButton from "./UserMenuButton";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/utils/authOptions";
 import FavouritesButton from "./FavouritesButton";
+
+import { authOptions } from "@/utils/authOptions";
+
+import { getCart } from "@/lib/db/cart";
 import { getFavourites } from "@/lib/db/favourites";
 
 async function searchProducts(formData: FormData) {

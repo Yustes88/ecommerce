@@ -1,8 +1,11 @@
-import { authOptions } from "@/utils/authOptions";
-import {prisma} from "@/lib/db/prisma";
-import { Cart, CartItem, Prisma } from "@prisma/client";
 import { getServerSession } from "next-auth";
 import { cookies } from "next/dist/client/components/headers";
+
+import { authOptions } from "@/utils/authOptions";
+
+import { prisma } from "@/lib/db/prisma";
+
+import { Cart, CartItem, Prisma } from "@prisma/client";
 
 export type CartWithProducts = Prisma.CartGetPayload<{
   include: { items: { include: { product: true } } };
@@ -23,16 +26,16 @@ export async function getCart(): Promise<ShoppingCart | null> {
 
   if (session) {
     cart = await prisma.cart.findFirst({
-      where: {id: session.user.id},
+      where: { id: session.user.id },
       include: { items: { include: { product: true } } },
     });
   } else {
     const localCartId = cookies().get("localCartId")?.value;
     cart = localCartId
       ? await prisma.cart.findUnique({
-          where: { id: localCartId },
-          include: { items: { include: { product: true } } },
-        })
+        where: { id: localCartId },
+        include: { items: { include: { product: true } } },
+      })
       : null;
   }
 
@@ -92,15 +95,15 @@ export async function mergeAnonymesCartIntoUserCart(userId: string) {
 
   const localCart = localCartId
     ? await prisma.cart.findUnique({
-        where: { id: localCartId },
-        include: { items: true },
-      })
+      where: { id: localCartId },
+      include: { items: true },
+    })
     : null;
 
   if (!localCart) return;
 
   const userCart = await prisma.cart.findFirst({
-    where: {  },
+    where: {},
     include: { items: true },
   });
 
@@ -120,7 +123,7 @@ export async function mergeAnonymesCartIntoUserCart(userId: string) {
               data: mergedCartItems.map((item) => ({
                 productId: item.productId,
                 quantity: item.quantity,
-}))
+              }))
             }
           }
         }
@@ -141,7 +144,7 @@ export async function mergeAnonymesCartIntoUserCart(userId: string) {
     }
 
     await tx.cart.delete({
-      where: {id: localCart.id}
+      where: { id: localCart.id }
     })
     cookies().set('localCartId', '')
   });

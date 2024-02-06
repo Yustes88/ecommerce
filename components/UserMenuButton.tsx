@@ -1,8 +1,10 @@
 "use client";
-import profilePicPlaceholder from "@/public/profile-pic-placeholder.png";
+
+import Image from "next/image";
 import { Session } from "next-auth";
 import { signIn, signOut } from "next-auth/react";
-import Image from "next/image";
+
+import profilePicPlaceholder from "@/public/profile-pic-placeholder.png";
 
 type UserMenuButtonProps = {
   session: Session | null;
@@ -10,6 +12,7 @@ type UserMenuButtonProps = {
 
 function UserMenuButton({ session }: UserMenuButtonProps) {
   const user = session?.user;
+
   return (
     <div className="dropdown dropdown-end">
       <label tabIndex={0} htmlFor="" className="btn btn-circle">
