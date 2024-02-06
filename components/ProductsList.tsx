@@ -14,7 +14,7 @@ type ProductsListProps = {
 export default async function ProductsList({products, currentPage, totalPages, title, className}: ProductsListProps) {
 
   return (
-    <div className="flex flex-col m-auto xl:max-w-7xl p-8">
+    <div className="flex flex-col justify-center items-center m-auto xl:max-w-7xl p-8" id="products-list">
       <Heading className={className}>{title}</Heading>
       <div className="my-4 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
         {products.map((product) => (
