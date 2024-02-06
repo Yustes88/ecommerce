@@ -1,6 +1,5 @@
-import Heading from "@/components/Heading";
-import ProductCardPreview from "@/components/ProductCardPreview";
 import ProductsList from "@/components/ProductsList";
+
 import { prisma } from "@/lib/db/prisma";
 
 type ProductPageProps = {
@@ -41,7 +40,7 @@ async function CategoryPage({
         currentPage={currentPage}
         totalPages={totalPages}
         title={id}
-        className={'uppercase m-auto text-center font-bold my-4'}
+        className={"m-auto my-4 text-center font-bold uppercase"}
       />
     </>
   );

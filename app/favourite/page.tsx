@@ -1,12 +1,11 @@
-import CartEntry from "@/components/CartEntry";
-import { getCart } from "@/lib/db/cart";
-import formatPrice from "@/lib/db/format";
-import { getFavourites } from "@/lib/db/favourites";
-import FavouriteEntry from "@/components/FavouriteEntry";
 import Link from "next/link";
 
+import FavouriteEntry from "@/components/FavouriteEntry";
+
+import { getFavourites } from "@/lib/db/favourites";
+
 export const metadata = {
-  title: "Your Cart",
+  title: "Your Favourites",
 };
 
 async function FavouritePage() {

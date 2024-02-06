@@ -1,9 +1,10 @@
-import CartEntry from "@/components/CartEntry";
-import { getCart } from "@/lib/db/cart";
-import setProductQuantity from "./action";
-import formatPrice from "@/lib/db/format";
-import Button from "@/components/Button";
 import Link from "next/link";
+
+import CartEntry from "@/components/CartEntry";
+
+import setProductQuantity from "./action";
+import { getCart } from "@/lib/db/cart";
+import formatPrice from "@/lib/db/format";
 
 export const metadata = {
   title: "Your Cart",
@@ -35,9 +36,10 @@ async function CartPage() {
       {cart?.items.length !== 0 && cart?.items !== undefined ? (
         <div className="flex flex-col items-end sm:items-center">
           <p className="mb-3 font-bold">Total: {formatPrice(cart?.subtotal)}</p>
-          <div className="mb-2 flex flex-col justify-center items-center">
+          <div className="mb-2 flex flex-col items-center justify-center">
             <p className="mb-1">
-              We are sorry, checkout is temporary unavailable. We are already working on an issue.
+              We are sorry, checkout is temporary unavailable. We are already
+              working on an issue.
             </p>
             <p>Please come back later. Your cart is saved.</p>
           </div>
