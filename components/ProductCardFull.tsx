@@ -1,15 +1,14 @@
-"use client";
-
 import Image from "next/image";
 
-import { Product } from "@prisma/client";
-import formatPrice from "@/lib/db/format";
+import ProductDetails from "./ProductDetails";
 
 import AddToCartButton from "@/app/product/[id]/AddToCartButton";
 import { incrementProductQuantity } from "@/app/product/[id]/actions";
 import AddToFavouritesButton from "@/app/product/[id]/AddToLikedFavouritesButton";
 
-import ProductDetails from "./ProductDetails";
+import formatPrice from "@/lib/db/format";
+
+import { Product } from "@prisma/client";
 
 type ProductCardFullProps = {
   product: Product;
@@ -90,9 +89,7 @@ export default function ProductCardFull({ product }: ProductCardFullProps) {
 
               {/* Product details */}
               <div className="mt-5">
-                <h2 className="text-sm font-medium">
-                  Description
-                </h2>
+                <h2 className="text-sm font-medium">Description</h2>
 
                 <div
                   className="prose prose-sm mt-4 text-gray-500"

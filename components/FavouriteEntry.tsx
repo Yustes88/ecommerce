@@ -1,21 +1,20 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
+
 import AddToCartButton from "@/app/product/[id]/AddToCartButton";
 import AddToFavouritesButton from "@/app/product/[id]/AddToLikedFavouritesButton";
 import { incrementProductQuantity } from "@/app/product/[id]/actions";
-import { CartItemWithProduct } from "@/lib/db/cart";
+
 import { FavouriteItemWithProduct } from "@/lib/db/favourites";
 import formatPrice from "@/lib/db/format";
-import Image from "next/image";
-import Link from "next/link";
-import { useTransition } from "react";
 
 type CartEntryProps = {
   cartItem: FavouriteItemWithProduct;
 };
 
 function FavouriteEntry({ cartItem: { product } }: CartEntryProps) {
-  const [isPending, startTransition] = useTransition();
 
   return (
     <div>

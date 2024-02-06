@@ -1,10 +1,16 @@
 "use client";
 
-import {prisma} from "@/lib/db/prisma";
+import { useState, useTransition } from "react";
+
 import { HeartIcon } from "@heroicons/react/24/solid";
 import { HeartIcon as OutlinedHeart } from "@heroicons/react/24/outline";
-import { useState, useTransition } from "react";
-import { deleteFavourites, updateFavourites, updateProductsLikedStatus } from "./actions";
+
+import {
+  deleteFavourites,
+  updateFavourites,
+  updateProductsLikedStatus,
+} from "./actions";
+
 import toast from "react-hot-toast";
 
 type AddToFavouritesButtonProps = {
@@ -16,17 +22,16 @@ type AddToFavouritesButtonProps = {
 function AddToFavouritesButton({
   productId,
   className,
-  liked
+  liked,
 }: AddToFavouritesButtonProps) {
   const [isLiked, setIsLiked] = useState(liked || false);
   const [isPending, startTransition] = useTransition();
   const [success, setSuccess] = useState(false);
-  const [remove, setRemove] = useState(false);
 
   const Icon = isLiked ? HeartIcon : OutlinedHeart;
 
   return (
-    <div className="flex justify-end items-end mt-2">
+    <div className="mt-2 flex items-end justify-end">
       <button
         className="transition hover:opacity-75"
         onClick={() => {
@@ -34,7 +39,7 @@ function AddToFavouritesButton({
             setIsLiked(false);
             startTransition(async () => {
               await deleteFavourites(productId);
-              toast.error('The item is removed from favourite list')
+              toast.error("The item is removed from favourite list");
             });
           } else {
             setIsLiked(true);
@@ -42,10 +47,10 @@ function AddToFavouritesButton({
             startTransition(async () => {
               await updateFavourites(productId);
               setSuccess(true);
-              toast.success('The item is added to the favourite list')
+              toast.success("The item is added to the favourite list");
             });
           }
-            updateProductsLikedStatus(productId, isLiked)
+          updateProductsLikedStatus(productId, isLiked);
         }}
       >
         <Icon color={isLiked ? "red" : "red"} className="w-10" />

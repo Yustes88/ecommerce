@@ -1,12 +1,10 @@
-import PriceTag from "@/components/PriceTag";
-import { prisma } from "@/lib/db/prisma";
 import { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { cache } from "react";
-import AddToCartButton from "./AddToCartButton";
-import { incrementProductQuantity } from "./actions";
+
 import ProductCardFull from "@/components/ProductCardFull";
+
+import { prisma } from "@/lib/db/prisma";
 
 const getProduct = cache(async (id: string) => {
   const product = await prisma.product.findUnique({ where: { id } });
@@ -41,7 +39,7 @@ async function ProductPage({ params: { id } }: ProductPageProps) {
 
   return (
     <>
-      <ProductCardFull product={product}/>
+      <ProductCardFull product={product} />
     </>
   );
 }

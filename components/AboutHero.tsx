@@ -21,7 +21,6 @@ export default function AboutHero() {
                 attire but also reflect your unique spirit, adding a touch of
                 glamour and refinement to every moment.
               </p>
-              
             </div>
             <Image
               src="https://images.unsplash.com/photo-1623251739833-b65b96379fd9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGpld2VscnklMjB0ZWFtfGVufDB8fDB8fHww"

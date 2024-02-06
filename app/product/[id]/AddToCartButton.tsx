@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+
 import toast from "react-hot-toast";
 
 type AddToCartButtonProps = {
@@ -26,8 +27,8 @@ function AddToCartButton({
           startTransition(async () => {
             await incrementProductQuantity(productId);
             setSuccess(true);
-            if(success) {
-                toast.success("The product is added to the cart!");
+            if (success) {
+              toast.success("The product is added to the cart!");
             }
           });
         }}
