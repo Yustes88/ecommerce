@@ -1,3 +1,4 @@
+'use client'
 import Link from "next/link";
 
 type PaginationBarProps = {
@@ -12,7 +13,7 @@ function PaginationBar({currentPage, totalPages}: PaginationBarProps) {
     
     for(let page = minPage; page <= maxPage; page++) {
         numberedPageItems.push(
-            <Link href={`?page=${page}`} key={page} 
+            <Link href={`?page=${page}`} key={page} scroll={false}
             className={`join-item btn ${currentPage === page ? 'btn-active pointer-events-none' : ''}`}>
             {page}
             </Link>
@@ -30,7 +31,9 @@ function PaginationBar({currentPage, totalPages}: PaginationBarProps) {
             «
           </Link>
         )}
-        <button className="join-item btn pointer-events-none">
+        <button className="join-item btn pointer-events-none" onClick={(e) => {
+          e.preventDefault()
+        }}>
           Page {currentPage}
         </button>
         {currentPage < totalPages && (
