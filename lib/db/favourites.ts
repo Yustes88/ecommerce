@@ -28,7 +28,7 @@ export async function createFavourites() {
     newFavourites = await prisma.favourites.create({
       data: {},
     });
-    cookies().set("localCartId", newFavourites.id);
+    cookies().set("localFavouritesId", newFavourites.id);
   }
 
   return {
@@ -48,7 +48,7 @@ export async function getFavourites(): Promise<FavouritesCart | null> {
       include: { items: { include: { product: true } } },
     });
   } else {
-    const localCartId = cookies().get("localCartId")?.value;
+    const localCartId = cookies().get("localFavouritesId")?.value;
     favourites = localCartId
       ? await prisma.favourites.findUnique({
           where: { id: localCartId },
