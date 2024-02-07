@@ -119,7 +119,7 @@ export const navigation = [
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/iuliia-obruchkova-2b650a208/",
+    href: "https://www.linkedin.com/in/iuliia-obruchkova/",
     icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
       <svg
         fill="currentColor"
