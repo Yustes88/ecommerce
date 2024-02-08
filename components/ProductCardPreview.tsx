@@ -28,7 +28,7 @@ function ProductCardPreview({ product }: ProductCardPreviewProps) {
           height={400}
         />
       </figure>
-      <div className="card-body">
+      <div className="card-body flex flex-col justify-around items-start">
         <h2 className="card-title font-bold capitalize">{product.name}</h2>
         <PriceTag price={product.price} />
       </div>

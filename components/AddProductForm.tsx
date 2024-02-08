@@ -28,7 +28,6 @@ async function addProduct(formData: FormData) {
     throw Error("Missing required filed");
   }
 
-  for (let i = 0; i < 50; i++) {
     await prisma.product.create({
       data: {
         name,
@@ -39,7 +38,6 @@ async function addProduct(formData: FormData) {
         details,
       },
     });
-  }
 
   redirect("/");
 }
